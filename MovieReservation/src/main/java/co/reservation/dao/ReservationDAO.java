@@ -40,18 +40,19 @@ public class ReservationDAO extends DAO {
 	public List<MovieVO> movieChoice(String date) {
 		conn = getConn();
 		List<MovieVO> list = new ArrayList<MovieVO>();
-		String sql = "select distinct movie_title\r\n"
+		String sql = "select distinct movie_title,auditorium_id\r\n"
 				+ "from movie m\r\n"
 				+ "inner join screening s\r\n"
 				+ "on m.movie_id = s.movie_id\r\n"
-				+ "where to_char(s.screening_start,'yy-mm-dd')=?";
+				+ "where to_char(s.screening_start,'yy-mm-dd')=?"
+				+ "order by auditorium_id asc";
 		try {
 			psmt=conn.prepareStatement(sql);
 			System.out.println(date);
 			psmt.setString(1, date);
 			rs=psmt.executeQuery();
 			while(rs.next()) {
-				MovieVO mov = new MovieVO(rs.getString("movie_title"));
+				MovieVO mov = new MovieVO(rs.getString("movie_title"),rs.getInt("auditorium_id"));
 				System.out.println(mov);
 				list.add(mov);
 			}
@@ -68,7 +69,7 @@ public class ReservationDAO extends DAO {
 	public List<ScreeningVO> roundChoice(String title) {
 		conn = getConn();
 		List<ScreeningVO> list = new ArrayList<ScreeningVO>();
-		String sql = "select s.screening_id as sid, to_char(s.screening_start,'hh24:mi') as start_time  "
+		String sql = "select s.auditorium_id,s.screening_id as sid, to_char(s.screening_start,'hh24:mi') as start_time  "
 				+ "from movie m\r\n"
 				+ "inner join screening s on m.movie_id=s.movie_id\r\n"
 				+ "where s.screening_start >= sysdate and movie_title=?";
@@ -77,7 +78,7 @@ public class ReservationDAO extends DAO {
 			psmt.setString(1, title);
 			rs=psmt.executeQuery();
 			while(rs.next()) {
-				ScreeningVO sc = new ScreeningVO(rs.getInt("sid")
+				ScreeningVO sc = new ScreeningVO(rs.getInt("auditorium_id"),rs.getInt("sid")
 						,rs.getString("start_time"));
 				list.add(sc);
 			}
