@@ -24,8 +24,6 @@ public class MemberSearchControl implements Control {
 		//아이디, 비밀번호 같은 필수 요소 입력 안 했을 때
 		if (job.equals("search")) {
 			path = "member.view/login.jsp";
-		} else if (job.equals("history")) {
-			path = "member.view/secondLogin.jsp";
 		} else if (job.equals("update")) {
 			path = "member.view/thirdLogin.jsp";
 		}
@@ -70,7 +68,7 @@ public class MemberSearchControl implements Control {
 				}
 			} 
 			
-		// 비밀번호 수정 	
+		// 개인정보 수정 	
 		} else if (job.equals("update")) {
 			MovieVO vo = new MovieVO();
 			vo.setId(id);
@@ -83,8 +81,8 @@ public class MemberSearchControl implements Control {
 				request.getRequestDispatcher(path).forward(request, response);
 			} else {
 				if (passwd.equals(member.getPasswd())) {
-					request.setAttribute("id", id);
-					request.getRequestDispatcher("member.view/modify.jsp").forward(request, response);
+					request.setAttribute("member", member);
+					request.getRequestDispatcher("member.view/modifyInfo.jsp").forward(request, response);
 				} else {
 					request.setAttribute("result", "비밀번호를 다시 확인해주세요.");
 					request.getRequestDispatcher(path).forward(request, response);
