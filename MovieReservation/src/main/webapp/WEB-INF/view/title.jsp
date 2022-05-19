@@ -9,10 +9,14 @@
 	body{
 		text-align : center;
 	} 
+	a{
+		color : white;
+		text-decoration-line: none;
+	}
 	
 </style>
 </head>
 <body>
-	<h1>NEGABOX</h1>
+	<a href="/MovieReservation/"><h1>NEGABOX</h1></a>
 </body>
 </html>

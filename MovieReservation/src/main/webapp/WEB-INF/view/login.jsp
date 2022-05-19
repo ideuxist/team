@@ -17,14 +17,14 @@
 <script type="text/javascript">
 function openFindId() {
 	window.name = "parentFrom";
-	window.open("findIdForm.jsp",
+	window.open("member.view/findIdForm.jsp",
 	"findIdForm", "width=500, height=300, resizable = no, scrollbars = no");
 	
 }
 
 function openFindPw() {
 	window.name = "parentFrom";
-	window.open("findPwForm.jsp",
+	window.open("member.view/findPwForm.jsp",
 	"findPwForm", "width=500, height=300, resizable = no, scrollbars = no");
 	
 }
@@ -39,13 +39,12 @@ function openFindPw() {
 	<%if(id ==null){%>
 	<form action ="${pageContext.servletContext.contextPath}/memberSearch.do" method = "post">
 		아이디 : <input type = "text" name = "id">
-		비밀번호 : <input type = "text" name = "passwd">
+		비밀번호 : <input type = "password" name = "passwd">
 	<input type ="submit" value ="로그인" >
 	<input type ="hidden" value = "search" name = "job">
 	<a href='javascript:void(0);' onclick="openFindId();">아이디 찾기</a>
   <a href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
 	</form>
-	
 	<form action = "${pageContext.servletContext.contextPath}/member.view/join.jsp" method = "post">
 		<input type = "submit" value = "회원가입">
 	</form>
