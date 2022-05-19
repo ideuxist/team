@@ -17,6 +17,11 @@ public class BoardService {
 		return articleList;
 	}
 
+	public void addArticle(ArticleVO articleVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 

@@ -62,12 +62,6 @@ public class ArticleVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImageFilename() {
-		return imageFileName;
-	}
-	public void setImageFilename(String imageFileName) {
-		this.imageFileName = imageFileName;
-	}
 	public String getId() {
 		return id;
 	}
