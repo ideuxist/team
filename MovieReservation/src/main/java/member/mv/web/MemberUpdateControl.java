@@ -27,7 +27,7 @@ public class MemberUpdateControl implements Control {
 		MovieService service = new MovieService();
 		service.memberModify(vo);
 		
-		request.getRequestDispatcher("testIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
