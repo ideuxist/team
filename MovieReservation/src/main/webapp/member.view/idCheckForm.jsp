@@ -12,7 +12,7 @@ var httpRequest = null;
 function getXMLHttpRequest(){
     var httpRequest = null;
 
-    if(window.ActiveXObject){
+/*     if(window.ActiveXObject){
         try{
             httpRequest = new ActiveXObject("Msxml2.XMLHTTP");    
         } catch(e) {
@@ -21,7 +21,9 @@ function getXMLHttpRequest(){
             } catch (e2) { httpRequest = null; }
         }
     }
-    else if(window.XMLHttpRequest){
+    else  */
+    	
+    	if(window.XMLHttpRequest){
         httpRequest = new window.XMLHttpRequest();
     }
     return httpRequest;    
