@@ -11,6 +11,20 @@ public class ScreeningVO {
 
 	
 
+	public ScreeningVO(int screeningID, int movieID, int auditoriumID) {
+		super();
+		this.screeningID = screeningID;
+		this.movieID = movieID;
+		this.auditoriumID = auditoriumID; 
+	}
+
+	public ScreeningVO(int screeningID, int auditoriumID, String screeningStart) {
+		super();
+		this.screeningID = screeningID;
+		this.auditoriumID = auditoriumID;
+		this.screeningStart = screeningStart;
+	}
+
 	public ScreeningVO() { 
 		super();
 	}
@@ -32,6 +46,8 @@ public class ScreeningVO {
 		this.auditoriumID = auditoriumID;
 		this.screeningStart = screeningStart;
 	}
+	
+
 	public int getScreeningID() {
 		return screeningID;
 	}
