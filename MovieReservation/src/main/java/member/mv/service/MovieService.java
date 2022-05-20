@@ -8,6 +8,10 @@ import member.mv.vo.MovieVO;
 public class MovieService {
 	MovieDAO dao = new MovieDAO();
 	
+	public void memberDelete(String id) {
+		dao.deleteMember(id);
+	}
+	
 	public void memberInsert(MovieVO vo) {
 		dao.insertMember(vo);
 	}	 

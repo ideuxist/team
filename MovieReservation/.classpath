@@ -75,5 +75,9 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="C:/Dev/commons-fileupload-1.3.3.jar"/>
+=======
+>>>>>>> branch 'master' of https://github.com/ideuxist/team.git
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
