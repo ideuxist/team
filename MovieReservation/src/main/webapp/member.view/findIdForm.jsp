@@ -9,7 +9,10 @@
 <style>
 
 div {
- padding : 20px;
+ display: inline-block;
+ text-align : center;
+ padding : 60px;
+}
 }
 h4 {
  text-align : center;
