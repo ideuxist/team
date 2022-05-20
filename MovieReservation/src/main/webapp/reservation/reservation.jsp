@@ -61,9 +61,8 @@
 		<!-- 영화 날짜 회차 선택후 남은 잔여좌석 불러오기 -->
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			<c:forEach items="${round}" var="round">
-				<input type="radio" name="time" value="${round.screeningStart}">
-				<input type ="hidden" name = "screeningId" value="${round.screeningID}">
-				${selectedMovie} ${round.auditoriumId }관 (${selectedDate}) 상영시간${round.screeningStart}><br><br>
+				<input type="radio" name="screeningID" value="${round.screeningID}">
+				${selectedMovie} ${round.auditoriumID }관 (${selectedDate}) 상영시간${round.screeningStart}<br><br>
 				<input type="hidden" name="movie" value="${selectedMovie}">
 				<input type="hidden" name="date" value="${selectedDate}">
 			</c:forEach>
@@ -76,7 +75,8 @@
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			상영일:<input type="text" name="date" value="${selectedDate}" readonly><br><br> 
 			상영영화:<input type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
-			상영시작시간:<input type="text" name="round" value="${selectedStartTime}"readonly><br><br> 
+			상영관:<input type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
+			상영시작시간:<input type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
 			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
 			<c:forEach items="${seat}" var="seat">
 					  <input type="checkbox" name="selectedSeat" value="${seat.seatId}">${seat.seatId}번

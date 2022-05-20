@@ -67,16 +67,17 @@ public class ScreeningChoice extends HttpServlet {
 		}else if (action.equals("searchSeat")) {
 			String date = request.getParameter("date");
 			String movie = request.getParameter("movie");
-			String startTime = request.getParameter("time");
-			String screeningId=request.getParameter("screeningId");
+			String screeningId=request.getParameter("screeningID");
 			System.out.println(screeningId);
 			ReservationService service = new ReservationService();
+			ScreeningVO screening =service.searchAuditoriumId(screeningId);
 			List<SeatReservedVO> seat = service.choiceSeat(screeningId);
+			System.out.println("서블릿"+screening);
 			System.out.println(seat);
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("selectedMovie", movie);
-			request.setAttribute("selectedStartTime", startTime);
 			request.setAttribute("selectedScreeningId", screeningId);
+			request.setAttribute("selectedAuditoriumId", screening);
 			request.setAttribute("seat", seat);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 		
