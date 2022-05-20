@@ -23,6 +23,7 @@ public class FrontController extends HttpServlet{
 		list.put("/memberIdCheck.do", new MemberIdCheckControl());
 		list.put("/memberFindId.do", new MemberIdFindControl());
 		list.put("/memberFindPw.do", new MemberPwFindControl());
+		list.put("/memberDelete.do", new MemberDeleteControl());
 	}
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +33,6 @@ public class FrontController extends HttpServlet{
 		String url = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = url.substring(context.length());
-		
 		Control exeCon = list.get(path);
 		exeCon.execute(req, resp);
 	}

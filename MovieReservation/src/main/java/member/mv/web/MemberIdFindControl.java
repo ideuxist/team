@@ -18,8 +18,13 @@ public class MemberIdFindControl implements Control {
 	
 			MovieService dao = new MovieService();
 			MovieVO vo = dao.findId(email);
-			request.setAttribute("vo", vo);
-			request.getRequestDispatcher("member.result/findIdOutput.jsp").forward(request, response);
+			if (vo == null) {
+				request.setAttribute("error", "이메일 주소를 다시 확인해 주세요");
+				request.getRequestDispatcher("member.view/findIdForm.jsp").forward(request, response);
+			} else {
+				request.setAttribute("vo", vo);
+				request.getRequestDispatcher("member.result/findIdOutput.jsp").forward(request, response);
+			}
 		
 	}
 

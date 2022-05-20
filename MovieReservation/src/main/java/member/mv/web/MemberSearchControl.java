@@ -23,9 +23,9 @@ public class MemberSearchControl implements Control {
 		
 		//아이디, 비밀번호 같은 필수 요소 입력 안 했을 때
 		if (job.equals("search")) {
-			path = "member.view/login.jsp";
+			path = "member.view/login.tiles";
 		} else if (job.equals("update")) {
-			path = "member.view/thirdLogin.jsp";
+			path = "member.view/thirdLogin.tiles";
 		}
 
 		if (id.isEmpty() || passwd.isEmpty()) {
@@ -82,7 +82,7 @@ public class MemberSearchControl implements Control {
 			} else {
 				if (passwd.equals(member.getPasswd())) {
 					request.setAttribute("member", member);
-					request.getRequestDispatcher("member.view/modifyInfo.jsp").forward(request, response);
+					request.getRequestDispatcher("member.view/modifyInfo.tiles").forward(request, response);
 				} else {
 					request.setAttribute("result", "비밀번호를 다시 확인해주세요.");
 					request.getRequestDispatcher(path).forward(request, response);
