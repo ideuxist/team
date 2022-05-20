@@ -5,11 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import co.reservation.DAO;
 import co.reservation.vo.ArticleVO;
 
 public class BoardDAO extends DAO{
-	
+	private DataSource dataFactory;
 	
 	public List<ArticleVO> selectAllArticles() {
 	List<ArticleVO> articleList = new ArrayList();
@@ -49,6 +51,51 @@ public class BoardDAO extends DAO{
 		disconn();
 	}
 	return articleList;
+	}
+
+	private int getNewArticleNO() {
+		conn=getConn();
+		String sql = "select max(articleno) from free_board";
+		try {
+			psmt=conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				return (rs.getInt(1)+1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return 0;
+	}
+
+	public void insertNewArticle(ArticleVO article) {
+		try {
+			conn=dataFactory.getConnection();
+			int articleNO=getNewArticleNO();
+			int parentNO = article.getParentNO();
+			String title = article.getTitle();
+			String content = article.getContent();
+			String id = article.getId();
+			String imageFileName = article.getImageFileName();
+			String sql = "insert into free_board (articleno,parentno,title,content,imagefilename,id)"
+					+ "values(?,?,?,?,?,?)";
+			psmt=conn.prepareStatement(sql);
+			psmt.setInt(1,articleNO);
+			psmt.setInt(2, parentNO);
+			psmt.setString(3, title);
+			psmt.setString(4,content);
+			psmt.setString(5, id);
+			psmt.setString(6,imageFileName);
+			psmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
 	}
 
 }

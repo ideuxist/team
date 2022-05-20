@@ -23,7 +23,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import co.reservation.service.BoardService;
 import co.reservation.vo.ArticleVO;
-@WebServlet("/BoardController")
+@WebServlet("/board/*")
 public class BoardController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -65,13 +65,13 @@ public class BoardController extends HttpServlet {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board/listArticle.tiles";
-			} else if (action.equals("/listArticles.do")) {
+			} else if (action.equals("/listAricles.do")) {
 				// action 값이 .do 이면 전체글 조회
 				articlesList = boardService.listArticles();// 전체글 조회
 				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board/listAricle.tiles";
 			  
-			} else if(action.equals("/articleForm.jsp")) {
+			} else if(action.equals("/addArticle.do")) {
 				nextPage="/board/articleForm.tiles";
 			
 			} else if (action.equals("/addArticle.do")) {

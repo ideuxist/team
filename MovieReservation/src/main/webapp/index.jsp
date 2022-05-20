@@ -9,4 +9,4 @@
 <body>
 	 <jsp:forward page="myapp.homepage.tiles"></jsp:forward>
 </body>
-</html> 
+</html>  
