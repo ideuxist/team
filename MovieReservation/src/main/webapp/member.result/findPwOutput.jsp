@@ -6,16 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+div {
+ display: inline-block;
+ text-align : center;
+ padding : 80px 50px 80px 100px;
+}
+</style>
 </head>
-<c:if test="${!empty error }">
+<body>
+<%-- <c:if test="${!empty error }">
 <h4>${error }</h4>
 <a href="member.view/findPwForm.jsp">다시 입력하기</a>
-</c:if>
+</c:if> --%>
+<div>
 <c:if test="${!empty result }">
 <h4>${result }</h4>
 <input type="button" value="닫기" onclick=window.close()>
 </c:if>
-<body>
-
+</div>
 </body>
 </html>
