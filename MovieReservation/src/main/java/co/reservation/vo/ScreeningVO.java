@@ -18,12 +18,15 @@ public class ScreeningVO {
 		this.auditoriumID = auditoriumID; 
 	}
 
-	public ScreeningVO(int screeningID, int auditoriumID, String screeningStart) {
+	public ScreeningVO(int auditoriumID, int screeningID, String screeningStart) {
 		super();
 		this.screeningID = screeningID;
 		this.auditoriumID = auditoriumID;
 		this.screeningStart = screeningStart;
 	}
+
+	
+	
 
 	public ScreeningVO() { 
 		super();
