@@ -98,7 +98,8 @@ public class ReservationDAO extends DAO {
 		List<SeatReservedVO> list = new ArrayList<SeatReservedVO>();
 		String sql = "select *\r\n"
 				+ "from seat_reserved\r\n"
-				+ "where screening_id=? and seat_reservation!=1";
+				+ "where screening_id=?"
+				+ "order by seat_id";
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, screeningId);
@@ -122,7 +123,6 @@ public class ReservationDAO extends DAO {
 	public SeatReservedVO completReservation(String scrId,String selectedSeat) {
 		conn=getConn();
 		System.out.println(selectedSeat);
-		scrId.replaceAll("\\p{Z}", "");
 		System.out.println(scrId);
 		int id = Integer.parseInt(scrId);
 		int seat = Integer.parseInt(selectedSeat);
