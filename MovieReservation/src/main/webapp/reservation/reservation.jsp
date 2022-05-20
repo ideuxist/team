@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="co.reservation.vo.SeatReservedVO"%>
+
 
 <!DOCTYPE html>
 <html>
