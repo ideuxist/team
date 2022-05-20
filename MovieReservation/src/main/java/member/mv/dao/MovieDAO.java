@@ -206,4 +206,38 @@ public class MovieDAO extends DAO{
 		}
 
 
+		public void autoInputDB(MovieVO vo) {
+			conn = getConnect();
+			// 현재 DB에 등록된 영화인지 체크
+			String sql = "SELECT * FROM movie where id = ?";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				// 도달하는지 체크
+				System.out.println("DAO 내부입니다." + vo.getId());
+				
+				psmt.setInt(1,Integer.parseInt(vo.getId()));
+				int r = psmt.executeUpdate();
+				if(r == 0) {
+					System.out.println("등록된 영화가 없습니다. 등록을 진행합니다.");
+					String sql2 = "insert movie (movie_id, movie_title, duration_min) values (?,?,?)";
+				
+					psmt = conn.prepareStatement(sql2);
+					psmt.setInt(1, Integer.parseInt(vo.getId()));
+					psmt.setString(2, vo.getMovieTitle());
+					psmt.setInt(3, Integer.parseInt(vo.getRuntime()));
+			
+					rs = psmt.executeQuery();
+				} else {
+					System.out.println("중복된 영화입니다.");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+					
+		}
+
+
 }

@@ -28,7 +28,7 @@ public class MovieHistoryControl implements Control {
 		
 		List<MovieVO> list = service.movieHistory(id);
 		request.setAttribute("all", list);
-		request.getRequestDispatcher("member.result/historyOutput.jsp").forward(request, response);
+		request.getRequestDispatcher("member.result/historyOutput.tiles").forward(request, response);
 		
 
 	}

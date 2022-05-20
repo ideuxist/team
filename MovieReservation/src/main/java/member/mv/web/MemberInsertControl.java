@@ -36,7 +36,7 @@ public class MemberInsertControl implements Control {
 		service.memberInsert(vo);
 		
 		
-		request.getRequestDispatcher("member.result/joinOutput.jsp").forward(request, response);
+		request.getRequestDispatcher("member.result/joinOutput.tiles").forward(request, response);
 
 		
 	}

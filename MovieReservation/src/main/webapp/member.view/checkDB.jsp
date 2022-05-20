@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <h3>마이페이지입니다</h3>
-  <a href="../member.view/thirdLogin.tiles">개인정보수정</a><br>
-  <a href="${pageContext.servletContext.contextPath }/movieHistory.do">나의예매내역</a><br>
+	DB 등록이 완료되었습니다.
 </body>
 </html>

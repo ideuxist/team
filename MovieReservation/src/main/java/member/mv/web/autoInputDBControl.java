@@ -1,0 +1,36 @@
+package member.mv.web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.mv.service.MovieService;
+import member.mv.vo.MovieVO;
+
+public class autoInputDBControl implements Control {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String[] id = request.getParameterValues("inputMovieId");
+		String[] title = request.getParameterValues("inputMovieTitle");
+		String[] runtime = request.getParameterValues("inputMovieRuntime");
+
+		System.out.println(id[1]);
+		MovieService service = new MovieService();
+		MovieVO vo = new MovieVO();
+		for(int i =0; i<4 ; i++) {
+			System.out.println("autoDB 반복문 도달");
+			vo.setId(id[i]);
+			vo.setMovieTitle(title[i]);
+			vo.setRuntime(id[i]);
+			
+			service.autoInputDB(vo);
+		}
+		
+		request.getRequestDispatcher("/member.view/checkDB.tiles").forward(request, response);
+	}
+
+}

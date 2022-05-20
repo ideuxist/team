@@ -27,15 +27,15 @@
 		<div id ="text">
 		</div>
 	</div>
-
 	
 	<script type="text/javascript">
+	// key, postrt_url
 	let key = "90ad618fa3d2f888905f0b844cbb97df";
 	let posterBase_url = "https://image.tmdb.org/t/p/w500";
 	let popularityURL = "https://api.themoviedb.org/3/movie/popular?api_key="+key+"&language=kr-KR&page=1";
 
 
-
+	let id = [];
 	fetch(popularityURL)
 	  .then(response => response.json())
 	  .then((res) => {
@@ -51,7 +51,7 @@
 
 			let img = document.getElementById('div');
 			let p = document.createElement('p');
-
+			let form = document.getElementById('form');
 			
 
 	    // 메인 화면 포스터 생성
@@ -75,10 +75,11 @@
 			console.log(movie_id);
 	      a.href = "./movieInfo.html?movieId="+movie_id;
 
-				
+
 	    }
 	  })
 	  .catch(error => console.log(error));
+
 	</script>
 </body>
 </html>

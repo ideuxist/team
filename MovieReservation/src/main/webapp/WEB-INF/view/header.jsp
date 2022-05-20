@@ -21,12 +21,25 @@
 	</style>
 </head>
 <body>
+
+	<%  
+		String id = (String)session.getAttribute("id");
+	%>
+	<%if(id == null){ %>
 	<ul>
 		<li><a href ="">영화검색</a></li>
 		<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
 		<li><a href ="">상영관</a></li>
-		<li><a href ="${pageContext.servletContext.contextPath}/member.view/mypage.jsp" id = "mypage">마이페이지</a></li>
 		<li><a href ="${pageContext.request.contextPath }/BoardController">게시판</a></li>
 	</ul>
+	<%}else if(id !=null){ %>
+			<ul>
+		<li><a href ="">영화검색</a></li>
+		<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
+		<li><a href ="">상영관</a></li>
+		<li><a href ="${pageContext.servletContext.contextPath}/member.view/mypage.tiles" id = "mypage">마이페이지</a></li>
+		<li><a href ="${pageContext.request.contextPath }/BoardController">게시판</a></li>
+	</ul>
+	<%}%>
 </body>
 </html>
