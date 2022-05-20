@@ -4,6 +4,7 @@
 	<artifactId>MovieReservation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -20,7 +21,7 @@
 		<dependency>
 	    	<groupId>org.apache.tiles</groupId>
 	    	<artifactId>tiles-jsp</artifactId>
-	    	<version>3.0.8</version>
+	    	<version>3.0.8</version> 
 	    </dependency>
 	    <dependency>
 	    	<groupId>org.apache.tiles</groupId>
@@ -82,7 +83,7 @@
 		    <artifactId>json</artifactId>
 		    <version>20180813</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload --> 
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -92,7 +93,7 @@
 	</dependencies>
 	
 
-	
+	 
 	
 	<build>
 		<plugins>
