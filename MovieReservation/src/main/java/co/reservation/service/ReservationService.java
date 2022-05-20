@@ -30,6 +30,10 @@ public class ReservationService {
 
 	public SeatReservedVO reservation(String scrId,String selectedSeat) {
 		return dao.completReservation(scrId,selectedSeat);
+	}
+
+	public ScreeningVO searchAuditoriumId(String screeningId) {
+		return dao.auditoriumIdSearch(screeningId);
 	} 
 		
 }
