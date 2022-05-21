@@ -78,7 +78,7 @@ public class MemberPwFindControl implements Control {
 
 		} else {
 			request.setAttribute("error", "정보를 찾을 수 없습니다. 아이디나 이메일이 정확한지 다시 확인해주세요");
-			request.getRequestDispatcher("member.result/findPwOutput.jsp").forward(request, response);
+			request.getRequestDispatcher("member.view/findPwForm.jsp").forward(request, response);
 		}
 	}
 

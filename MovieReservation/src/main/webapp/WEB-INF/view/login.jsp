@@ -1,34 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
 <title>login, logout</title>
-	<style>
-		#login{
-			text-align: right;
-		}
-	</style>
+<style>
+#login {
+	text-align: right;
+}
+</style>
+
 </head>
 <body>
-<script type="text/javascript">
-function openFindId() {
-	window.name = "parentFrom";
-	window.open("member.view/findIdForm.jsp",
-	"findIdForm", "width=500, height=300, resizable = no, scrollbars = no");
-	
-}
+	<script type="text/javascript">
+		function openFindId() {
+			window.name = "parentFrom";
+			window.open("member.view/findIdForm.jsp", "findIdForm",
+					"width=500, height=300, resizable = no, scrollbars = no");
+				}
 
-function openFindPw() {
-	window.name = "parentFrom";
-	window.open("member.view/findPwForm.jsp",
-	"findPwForm", "width=500, height=300, resizable = no, scrollbars = no");
-	
-}
-</script>
+		function openFindPw() {
+			window.name = "parentFrom";
+			window.open("member.view/findPwForm.jsp",
+			"findPwForm", "width=500, height=300, resizable = no, scrollbars = no");
+		}
+	</script>
 	<div id = "login">
 	
 	<%
@@ -138,10 +137,8 @@ function openFindPw() {
 			<input type = "hidden" name = "account" value = "logout">
 		</form> 
 	<%} %>
+
 	</div>
 
-
-	
-	
 </body>
 </html>

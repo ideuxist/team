@@ -73,6 +73,7 @@ public class ReservationDAO extends DAO {
 				+ "from movie m\r\n"
 				+ "inner join screening s on m.movie_id=s.movie_id\r\n"
 				+ "where s.screening_start >= sysdate and movie_title=?";
+		
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, title);
@@ -88,6 +89,7 @@ public class ReservationDAO extends DAO {
 		}finally {
 			disconn();
 		}
+		System.out.println("상영관 시작시간출력"+list);
 		return list;
 	}
 
@@ -96,7 +98,8 @@ public class ReservationDAO extends DAO {
 		List<SeatReservedVO> list = new ArrayList<SeatReservedVO>();
 		String sql = "select *\r\n"
 				+ "from seat_reserved\r\n"
-				+ "where screening_id=? and seat_reservation!=1";
+				+ "where screening_id=?"
+				+ "order by seat_id";
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, screeningId);
@@ -120,7 +123,6 @@ public class ReservationDAO extends DAO {
 	public SeatReservedVO completReservation(String scrId,String selectedSeat) {
 		conn=getConn();
 		System.out.println(selectedSeat);
-		scrId.replaceAll("\\p{Z}", "");
 		System.out.println(scrId);
 		int id = Integer.parseInt(scrId);
 		int seat = Integer.parseInt(selectedSeat);
@@ -147,6 +149,32 @@ public class ReservationDAO extends DAO {
 		return sr;
 		
 		
+	}
+
+	public ScreeningVO auditoriumIdSearch(String screeningId) {
+		conn = getConn();
+		ScreeningVO vo = new ScreeningVO();
+		//int id = Integer.parseInt(screeningId);
+		String sql = "select auditorium_id, to_char(screening_start,'hh24:mi') as str_time from screening where screening_id=?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, screeningId);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			
+			vo.setAuditoriumID(rs.getInt("auditorium_id"));
+			vo.setScreeningStart(rs.getString("str_time"));
+			
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+	    System.out.println("찾기 힘드네"+vo);
+		return vo; 
 	}	
 
 }

@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pro.service.CommentService;
+import com.pro.service.InfoService;
 import com.pro.vo.MemberVO;
 
 public class CmAddControl implements Control {
@@ -28,7 +28,7 @@ public class CmAddControl implements Control {
 		vo.setCmStars(Integer.parseInt(stars));
 		vo.setMovieId(movieId);
 
-		CommentService service = new CommentService();
+		InfoService service = new InfoService();
 		service.addComment(vo);
 
 	}

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import com.pro.service.CommentService;
+import com.pro.service.InfoService;
 
 public class CmPageControl implements Control {
 	
@@ -20,7 +20,7 @@ public class CmPageControl implements Control {
 		response.setContentType("text/html;charset=utf-8");
 
 		int movieId = Integer.parseInt(request.getParameter("movieId"));
-		CommentService service = new CommentService();
+		InfoService service = new InfoService();
 		int count = service.getRownum(movieId);
 		
 		PrintWriter out = response.getWriter();

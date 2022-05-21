@@ -8,7 +8,7 @@
 </head>
 <body>
   <h3>마이페이지입니다</h3>
-  <a href="../member.view/thirdLogin.tiles">개인정보수정</a><br>
-  <a href="${pageContext.servletContext.contextPath }/movieHistory.do">나의예매내역</a><br>
+  <a href="${pageContext.servletContext.contextPath}/member.view/thirdLogin.tiles">내정보</a><br>
+  <a href="${pageContext.servletContext.contextPath}/movieHistory.do">나의예매내역</a><br>
 </body>
 </html>

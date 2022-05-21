@@ -18,6 +18,7 @@
 		  alert("비밀번호를 동일하게 입력하세요");
 		  return false;
 	  }
+
   }
   
   function openIdChk(){
@@ -36,15 +37,15 @@
 <body>
   <h3>회원가입 페이지입니다</h3>
   <form action="${pageContext.servletContext.contextPath }/memberInsert.do" name="userInfo" method="post" onsubmit="return checkValue()">
-    이름 <input type="text" name="name"><br>
+    이름 <input type="text" name="name" required><br>
     아이디 <input type="text" name="id" onkeydown="inputIdChk()">
     <input type="button" value="중복확인" onclick="openIdChk()"><br>
     <input type="hidden" name="idDuplication" value="idUncheck">
    	비밀번호 <input type="password" name="passwd"><br>
    	비밀번호 확인 <input type="password" name="passwdcheck"><br>
-   	이메일 <input type="email" name="email"><br>
+   	이메일 <input type="email" name="email" required><br>
    	<input type="submit" value="회원가입"><br>
-   	<input type="button" value="취소" onclick="location.href='login.jsp'">
+   	<input type="button" value="취소" onclick="location.href='login.tiles'">
   </form>
   
 </body>

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="co.reservation.vo.SeatReservedVO"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -61,9 +61,8 @@
 		<!-- 영화 날짜 회차 선택후 남은 잔여좌석 불러오기 -->
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			<c:forEach items="${round}" var="round">
-				<input type="radio" name="time" value="${round.screeningStart}">
-				<input type ="hidden" name = "screeningId" value="${round.screeningID}">
-				${selectedMovie} ${round.auditoriumId }관 (${selectedDate}) 상영시간${round.screeningStart}><br><br>
+				<input type="radio" name="screeningID" value="${round.screeningID}">
+				${selectedMovie} ${round.auditoriumID }관 (${selectedDate}) 상영시간${round.screeningStart}<br><br>
 				<input type="hidden" name="movie" value="${selectedMovie}">
 				<input type="hidden" name="date" value="${selectedDate}">
 			</c:forEach>
@@ -76,11 +75,39 @@
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			상영일:<input type="text" name="date" value="${selectedDate}" readonly><br><br> 
 			상영영화:<input type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
-			상영시작시간:<input type="text" name="round" value="${selectedStartTime}"readonly><br><br> 
+			상영관:<input type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
+			상영시작시간:<input type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
 			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
+			<h3 align="center">입구=========스크린=========출구</h3>
+			<table border=1 align="center">
+			<tr>
 			<c:forEach items="${seat}" var="seat">
-					  <input type="checkbox" name="selectedSeat" value="${seat.seatId}">${seat.seatId}번
+					  <c:choose>
+					  <c:when test="${seat.reserSeat==0}">
+					  <td><input type="checkbox" name="selectedSeat" value="${seat.seatId}">${seat.seatId}번</td>
+					  <c:if test="${seat.seatId==20}">
+					  </tr>
+					  </c:if>
+					  <c:if test="${seat.seatId%5==0}">
+					  </tr><tr>
+					  </c:if>
+					  </c:when>
+					  <c:otherwise>
+					  <td><input type="checkbox" name="selectedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번 (예약석)</td>
+					  <c:if test="${seat.seatId==20}">
+					  </tr>
+					  </c:if>
+					  <c:if test="${seat.seatId%5==0}">
+					  </tr>
+					  </c:if>
+					  </c:otherwise>
+					  </c:choose>
 			</c:forEach>
+			
+			</table>
+				<div></div>
+	<div class="seat-wrapper"></div> 
+	
 			<input type="submit" value="예매하기"><br><br>
 		  <input type="hidden" name="choice" value="doReservation">
 		</form>
@@ -104,10 +131,10 @@
 	
 
 
-<script>
-	/* <div></div>
-	<div class="seat-wrapper"></div> */
-	/* //start viewseat
+<!-- <script>
+
+
+	//start viewseat
 	 let test = [];
 	 let selectedSeats = new Array();
 	 let selectedSeatsMap = [];
@@ -168,5 +195,5 @@
 	 } else if (i === 6) {
 	 input.value = "G" + j;
 	 }
-	 } //end of viewseat */
-</script>
+	 } //end of viewseat */ */ */
+</script> -->
