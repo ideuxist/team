@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#wrap {
+ display : block;
+ width : 500px;
+ height : 300px;
+ text-align : center;
+ margin : 0 auto;
+}
+</style>
 <script type="text/javascript">
 var httpRequest = null;
 
@@ -100,6 +109,9 @@ function sendCheckValue(){
             <input type="text" name="idinput" id="userId">
             <input type="button" value="중복확인" onclick="idCheck()">
         </form>
+        <br>
+        <hr>
+        <br>
         <div id="msg"></div>
         <br>
         <input id="cancelBtn" type="button" value="취소" onclick="window.close()"><br>

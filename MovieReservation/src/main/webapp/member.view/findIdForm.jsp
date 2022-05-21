@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 <style>
 
-div {
- display: inline-block;
- text-align : center;
- padding : 60px;
+#container {
+  display : block;
+  width : 500px;
+  height : 250px;
+  text-align : center;
+  margin : 0 auto;
 }
-}
+
 h4 {
  text-align : center;
 }
@@ -33,7 +35,7 @@ input {
 </style>
 </head>
 <body>
-<div>
+<div id="container">
 <h4>가입할 때 사용한 이메일 주소를 입력하세요</h4>
 <hr>
 <h5>${error }</h5>

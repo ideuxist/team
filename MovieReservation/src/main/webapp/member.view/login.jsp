@@ -9,14 +9,14 @@
 function openFindId() {
 	window.name = "parentFrom";
 	window.open("findIdForm.jsp",
-	"findIdForm", "width=500, height=300, resizable = no, scrollbars = no");
+	"findIdForm", "width=500, height=300, resizable = yes, scrollbars = no");
 	
 }
 
 function openFindPw() {
 	window.name = "parentFrom";
 	window.open("findPwForm.jsp",
-	"findPwForm", "width=500, height=300, resizable = no, scrollbars = no");
+	"findPwForm", "width=500, height=300, resizable = yes, scrollbars = no");
 	
 }
 </script>

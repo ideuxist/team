@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div {
-display: inline-block;
- text-align : center;
- padding : 20px 30px 20px 40px;
+#container {
+  display : block;
+  width : 500px;
+  height : 250px;
+  text-align : center;
+  margin : 0 auto;
 }
 h4 {
  text-align : center;
@@ -35,7 +37,7 @@ input {
 </style>
 </head>
 <body>
-<div>
+<div id="container">
 <h4>가입 시 사용한 정보를 입력하세요</h4>
 <h4>비밀번호는 메일로 전송되며, 잠시만 기다려주세요</h4>
 <hr>

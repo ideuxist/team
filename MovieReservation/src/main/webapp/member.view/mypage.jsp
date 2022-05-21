@@ -5,10 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#mypageDiv {
+ position : relative;
+ top : -100px;
+}
+
+</style>
 </head>
 <body>
-  <h3>마이페이지입니다</h3>
-  <a href="${pageContext.servletContext.contextPath}/member.view/thirdLogin.tiles">내정보</a><br>
-  <a href="${pageContext.servletContext.contextPath}/movieHistory.do">나의예매내역</a><br>
+<div id="mypageDiv">
+  <a href="${pageContext.servletContext.contextPath}/member.view/thirdLogin.tiles" class="mpa">내정보</a><br>
+  <br>
+  <br>
+  <a href="${pageContext.servletContext.contextPath}/movieHistory.do" class="mpa">나의예매내역</a><br>
+</div>
 </body>
 </html>
