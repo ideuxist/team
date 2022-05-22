@@ -8,7 +8,14 @@ public class MovieVO {
 	String movieTitle;
 	String movieDate;
 	String movieRoom;
+	String Runtime;
 	
+	public String getRuntime() {
+		return Runtime;
+	}
+	public void setRuntime(String runtime) {
+		Runtime = runtime;
+	}
 	public String getEmail() {
 		return email;
 	}

@@ -34,6 +34,11 @@ public class MovieService {
 	public MovieVO findId(String email) {
 		return dao.findId(email);
 	}
+
+	public void autoInputDB(MovieVO vo) {
+		dao.autoInputDB(vo);
+		
+	}
 	
 	
 }
