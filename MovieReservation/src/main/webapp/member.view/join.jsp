@@ -32,7 +32,6 @@ fieldset {
   border-right-width: 0;
   border-bottom-width: 1;
   background: transparent;
-  font-weight : bold;
   color : white;
 }
 #dupliChk {
@@ -91,13 +90,13 @@ fieldset {
   <fieldset>
   <div id="frm">
   <form id="joinFrm" action="${pageContext.servletContext.contextPath }/memberInsert.do" name="userInfo" method="post" onsubmit="return checkValue()">
-      <input class="joinInput" type="text" name="name" required placeholder="이름">
-      <input class="joinInput" type="text" name="id" placeholder="아이디" onkeydown="inputIdChk()">
+      <input class="joinInput" type="text" name="name" required placeholder="이름" autocomplete="off">
+      <input class="joinInput" type="text" name="id" placeholder="아이디" onkeydown="inputIdChk()" autocomplete="off">
       <input id="dupliChk" type="button" value="중복확인" onclick="openIdChk()">
       <input type="hidden" name="idDuplication" value="idUncheck">
    	  <input class="joinInput" type="password" name="passwd" placeholder="비밀번호">
    	  <input class="joinInput" type="password" name="passwdcheck" placeholder="비밀번호확인">
-   	  <input class="joinInput" type="email" name="email" required placeholder="이메일">
+   	  <input class="joinInput" type="email" name="email" required placeholder="이메일" autocomplete="off">
    	  <input class="joinFrmBtn" type="submit" value="회원가입">
    	  <input class="joinFrmBtn" type="button" value="취소" onclick="location.href='login.tiles'">
    </form>

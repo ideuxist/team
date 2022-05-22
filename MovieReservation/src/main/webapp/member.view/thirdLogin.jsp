@@ -17,7 +17,6 @@
   border-right-width: 0;
   border-bottom-width: 1;
   background: transparent;
-  font-weight : bold;
   color : white;
 }
 #reloginBtn {
@@ -36,8 +35,8 @@
 <h3>${error }</h3>
   <h3>${result }</h3>
   <form action="${pageContext.servletContext.contextPath }/memberSearch.do" method="post">
-  <input class="reloginInput" type="text" name="id" placeholder="아이디"><br>
-  <input class="reloginInput" type="password" name="passwd" placeholder="비밀번호"><br>
+  <input class="reloginInput" type="text" name="id" placeholder="아이디" autocomplete="off"><br>
+  <input class="reloginInput" type="password" name="passwd" placeholder="비밀번호" autocomplete="off"><br>
   <input type="hidden" name="job" value="update">
   <input id ="reloginBtn" type="submit" value="로그인"><br>
   </form>

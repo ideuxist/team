@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="mypageDiv">
-  <a href="${pageContext.servletContext.contextPath}/member.view/thirdLogin.tiles" class="mpa">내정보</a><br>
+  <a href="${pageContext.servletContext.contextPath}/member.view/thirdLogin.tiles" class="mpa">내정보수정 및 탈퇴</a><br>
   <br>
   <br>
   <a href="${pageContext.servletContext.contextPath}/movieHistory.do" class="mpa">나의예매내역</a><br>

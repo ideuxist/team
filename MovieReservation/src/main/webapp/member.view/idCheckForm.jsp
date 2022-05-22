@@ -6,12 +6,62 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+body {
+ background : rgba(0,0,0,0.9);
+}
 #wrap {
+ position : absolute;
+ top : 40px;
  display : block;
  width : 500px;
  height : 300px;
  text-align : center;
  margin : 0 auto;
+}
+#msg {
+ position : relative;
+ top : 20px;
+ right : 15px;
+ width : 500px;
+ height : 50px;
+ color : rgba(255,255,255,0.4);
+}
+#userId {
+ padding : 15px;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 1;
+  background: transparent;
+  color : white;
+  position : relative;
+  left : 20px;
+}
+#dupliChkFrmBtn {
+ position : relative;
+ right :50px;
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
+ 
+}
+#cancelBtn {
+ position : relative;
+ right : 15px;
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
+ top : 20px;
+}
+#useBtn {
+ position : relative;
+ right : 15px;
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
 }
 </style>
 <script type="text/javascript">
@@ -107,15 +157,13 @@ function sendCheckValue(){
     <div id="chk">
         <form id="checkForm">
             <input type="text" name="idinput" id="userId">
-            <input type="button" value="중복확인" onclick="idCheck()">
+            <input id="dupliChkFrmBtn" type="button" value="중복확인" onclick="idCheck()">
         </form>
-        <br>
-        <hr>
-        <br>
+ 
         <div id="msg"></div>
         <br>
-        <input id="cancelBtn" type="button" value="취소" onclick="window.close()"><br>
-        <input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
+        <input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()"><br>
+        <input id="cancelBtn" type="button" value="취소" onclick="window.close()">
     </div>
 </div>    
 
