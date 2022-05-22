@@ -17,7 +17,6 @@ function getMovie() {
     fetch(url)
         .then(res => res.json())
         .then(res => {
-            console.log(res);
             getTrailer(res.imdb_id);
 
             let base_url = "https://image.tmdb.org/t/p/w500";
@@ -25,6 +24,7 @@ function getMovie() {
             let img = document.createElement('img');
             img.setAttribute("id", "posterImg");
             img.src = poster;
+            console.log(img);
             posterDiv.appendChild(img);
 
             let title = res.original_title;
@@ -44,6 +44,16 @@ function getMovie() {
         })
 };
 
+// get credits
+function getCredits(id) {
+    let url = `https://imdb-api.com/en/API/FullCast/k_wfatj861/${id}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(res => {
+        })
+}
+
 // get trailer
 let trailerDiv = document.querySelector('.trailer');
 
@@ -55,7 +65,7 @@ function getTrailer(id) {
         .then(res => {
             console.log(res);
             let vid = document.createElement('iframe');
-            vid.width = 600;
+            vid.width = 300;
             vid.height = 300;
             let key = res.videoId;
             vid.src = `https://www.youtube.com/embed/${key}?autoplay=0`;
@@ -69,7 +79,7 @@ let totNumPages = 0;
 let pagination = document.getElementById('pagination');
 
 function makePage() {
-    let url = `commnetPage.go`;
+    let url = `commnetPage.do`;
 
     fetch(url, {
         method: 'post',
@@ -126,7 +136,7 @@ let table = document.getElementById('cmtTable');
 function showComment(page) {
     table.innerHTML = "";
 
-    let url = `commnetList.go`;
+    let url = `commnetList.do`;
     fetch(url, {
         method: 'post',
         headers: {
@@ -180,7 +190,7 @@ function showComment(page) {
 }
 
 function delComment(val) {
-    let url = `commentDel.go`;
+    let url = `commentDel.do`;
     fetch(url, {
         method: 'post',
         headers: {
@@ -197,7 +207,7 @@ function delComment(val) {
 }
 
 function addComment() {
-    let url = `commentAdd.go`;
+    let url = `commentAdd.do`;
 
     let addBtn = document.getElementById('addBtn');
     addBtn.addEventListener('click', e => {
@@ -235,7 +245,7 @@ function addComment() {
 let ratingDiv = document.getElementById('ratingDiv')
 
 function getRating() {
-    let url = `getRating.go`;
+    let url = `getRating.do`;
 
     fetch(url, {
         method: 'post',
@@ -247,7 +257,7 @@ function getRating() {
         .then(res => res.json())
         .then(res => {
             let a = document.createElement('a');
-            a.innerHTML = `평점 ${res.rating}`;
+            a.innerHTML = `${res.rating}`;
             ratingDiv.appendChild(a);
         })
 }
@@ -256,9 +266,9 @@ function getRating() {
 // get a number of likes
 let indivLike = 0;
 let likesDiv = document.getElementById('likesDiv');
-let likeBtn = document.getElementById('likeBtn');
-likeBtn.addEventListener('click', e => {
-    likeBtn.innerHTML = "";
+let likeCount = document.getElementById('likeCount');
+likesDiv.addEventListener('click', e => {
+    likeCount.innerHTML = "";
     clickLike();
     getIndivLike();
     getLikes();
@@ -266,7 +276,7 @@ likeBtn.addEventListener('click', e => {
 
 // invoke individual like
 function clickLike() {
-    let url = `clickLike.go`;
+    let url = `clickLike.do`;
 
     fetch(url, {
         method: 'post',
@@ -279,7 +289,7 @@ function clickLike() {
 
 // processing individual like
 function getIndivLike() {
-    let url = `getIndivLike.go`;
+    let url = `getIndivLike.do`;
 
     fetch(url, {
         method: 'post',
@@ -295,7 +305,7 @@ function getIndivLike() {
 }
 
 function getLikes() {
-    let url = `getLikes.go`;
+    let url = `getLikes.do`;
 
     fetch(url, {
         method: 'post',
@@ -306,13 +316,14 @@ function getLikes() {
     })
         .then(res => res.json())
         .then(res => {
-            likeBtn.innerHTML += `좋아요 ${res.likes}`;
+            likeCount.innerHTML = `${res.likes}`;
         })
 }
 
 function infoPage() {
     getMovie();
-    makePage()
+    getCredits();
+    makePage();
     addComment();
     showComment(current_page);
     getIndivLike();
