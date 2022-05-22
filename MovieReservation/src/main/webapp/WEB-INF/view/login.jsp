@@ -8,9 +8,10 @@
 
 <title>login, logout</title>
 <style>
-#login {
-	text-align: right;
-}
+	#login {
+		background-color: black;
+		text-align: right;
+	}
 </style>
 
 </head>
@@ -36,11 +37,8 @@
 	
 	
 	<%if(id == null){%>
-	<form action ="${pageContext.servletContext.contextPath}/memberSearch.do" method = "post">
-		아이디 : <input type = "text" name = "id">
-		비밀번호 : <input type = "password" name = "passwd">
+	<form action ="${pageContext.servletContext.contextPath}/member.view/login.tiles" method = "post">
 	<input type ="submit" value ="로그인" >
-	<input type ="hidden" value = "search" name = "job">
 	<a href='javascript:void(0);' onclick="openFindId();">아이디 찾기</a>
   <a href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
 	</form>

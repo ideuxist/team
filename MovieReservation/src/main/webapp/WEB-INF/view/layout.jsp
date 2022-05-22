@@ -5,10 +5,19 @@
   <head>
     <title>main</title>
     <style>
+    	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    	
     	body{
-    		background-color: black;
     		color: white;
     	}
+
+		a{
+			text-decoration: none;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
     </style>
   </head>
   <body>
