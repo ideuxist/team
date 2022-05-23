@@ -6,9 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.mv.dao.MovieDAO;
 import member.mv.service.MovieService;
-import member.mv.vo.MovieVO;
 
 public class MemberDeleteControl implements Control {
 

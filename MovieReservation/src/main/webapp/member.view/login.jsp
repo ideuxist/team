@@ -8,7 +8,8 @@
 <style>
 #loginFrm {
  position : relative;
- top : -100px;
+ top : 200px;
+ bottom : 200px;
 }
 .loginH3 {
  text-align : center;

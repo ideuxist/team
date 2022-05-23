@@ -5,8 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+    .footer{
+        
+    }
+</style>
 </head>
 <body>
-	<p>footer 입니다.</p>
+	<div class = "footer">
+        <p>Copyright ©NEGABOX</p>
+    </div>
+
 </body>
 </html>

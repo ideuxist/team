@@ -120,7 +120,8 @@
 	  </c:choose>	
 <%} else{%>
 	  <script>
-		alert('로그인 후 이용가능합니다')  
+		alert('로그인 후 이용가능합니다')
+		response.sendRedirect("/MovieReservation/index.jsp"); // 로그인 화면으로 다시 돌아간다.
 	  </script>	
 	  
 
