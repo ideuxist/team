@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 	.poster_img{
 		width: 300px;
 		height: 450px;
@@ -14,17 +15,39 @@
 	}
 	#poster_div{
 		opacity: 1;
-		text-align: center;
-
-
-		
+		text-align: center;	
 	}
 	.poster_ul{
 		z-index: 1;
 		list-style: none;
 		display: inline-block;
 	}
-	
+
+	.poster_div_btn{
+		margin-left: 120px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border : none;
+		background-color : #037b94;
+		color : white;
+		width: 200px;
+		height : 40px;
+	}
+	.poster_div_btn_first{
+		margin-left: 320px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border : none;
+		background-color : #037b94;
+		color : white;
+		width: 200px;
+		height : 40px;
+	}
+
 </style>
 </head>
 	
@@ -32,8 +55,11 @@
 	<div id = "poster_body">
 		<div id = "poster_div">
 		</div>
-		<div id = "poster_btn">
-		</div>
+		<form action = "${pageContext.servletContext.contextPath}/reservation/reservation.tiles"method="post" id = "poster_form">
+			<div id = "poster_btn">
+			</div>
+		</form>
+		
 	</div>
 	
 
@@ -83,25 +109,39 @@
 		  li.appendChild(a);
 		  ul.appendChild(li);
 		  div.appendChild(ul);
+			// 뒷 배경 넣기
+			document.getElementById('poster_body').style.backgroundImage = "url('"+ posterBase_url + res.results[0].poster_path + "')";
+			
 	    }
-		// 뒷 배경 넣기
-		document.getElementById('poster_body').style.backgroundImage = "url('"+ posterBase_url + res.results[0].poster_path + "')";
-		
-		//poster_btn 만들기
-		let input = document.createElement('input');
-		let btn_a = document.createElement('a');
-		let poster_btn = document.getElementById('poster_btn');
-		//속성 부여
-		input.setAttribute('type', 'button');
-		input.setAttribute('class', 'poster_div_btn');
-		btn_a.setAttribute('href', '$/reservation/reservation.tiles');
-		btn_a.setAttribute('class', 'reservation_btn');
-		btn_a.setAttribute('title', '영화 예매');
-		btn_a.innerHTML = '예매';
-		
-		input.appendChild(btn_a);
-		poster_btn.appendChild(input);
+			
+			for(let i = 0; i <4; i++){
+			//poster_btn 만들기
+			let input = document.createElement('input');
+			let poster_btn = document.getElementById('poster_btn');
+			let poster_form = document.getElementById('poster_form');
+			//속성 부여
+			// input -> poster_btn -> poster_
+			if(i == 0){
+			input.setAttribute('type', 'submit');
+			input.setAttribute('class', 'poster_div_btn_first');
+			input.setAttribute('title', '영화 예매');
+			input.setAttribute('value', '예매');
+			poster_btn.appendChild(input);
+			poster_form.appendChild(poster_btn);
+			} else {
+			input.setAttribute('type', 'submit');
+			input.setAttribute('class', 'poster_div_btn');
+			input.setAttribute('title', '영화 예매');
+			input.setAttribute('value', '예매');
+			poster_btn.appendChild(input);
+			poster_form.appendChild(poster_btn);
+			}
 
+			}
+
+			
+
+			
 
 
 		// 좋아요 버튼 추가하기(megabox 참고)
