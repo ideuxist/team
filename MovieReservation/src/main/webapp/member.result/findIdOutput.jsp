@@ -7,10 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div {
- display: inline-block;
+body {
+  width : 500px;
+  height : 250px;
+  margin-top : 60px;
+  background : rgba(0,0,0,0.9);
+}
+#findIdOutput {
+ display: block;
+ width : 500px;
+ height : 250px;
+ margin : 0 auto;
  text-align : center;
- padding : 80px 0px 80px 150px;
+}
+#findIdOutputH4{
+ text-align : center;
+ color : rgba(255,255,255,0.9);
+ }
+#findIdOutputBtn{
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.6);
+
 }
 
 </style>
@@ -19,10 +38,10 @@ div {
 <%-- <c:if test="${empty vo }">
  <h4>이메일 주소를 다시 확인해주세요</h4>
  </c:if> --%>
-<div id="container"> 
+<div id="findIdOutput"> 
 <c:if test="${!empty vo }">
- <h4>아이디는 ${vo.id } 입니다</h4>
-<input type="button" value="닫기" onclick="window.close()">
+ <h4 id="findIdOutputH4">아이디는 ${vo.id } 입니다</h4>
+<input id="findIdOutputBtn" type="button" value="닫기" onclick="window.close()">
 </c:if>
 </div> 
 </body>

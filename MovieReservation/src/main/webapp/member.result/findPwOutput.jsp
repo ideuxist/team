@@ -7,11 +7,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div {
- display: inline-block;
- text-align : center;
- padding : 80px 50px 80px 100px;
+body {
+  width : 500px;
+  height : 250px;
+  margin-top : 60px;
+  background : rgba(0,0,0,0.9);
 }
+#findPwOutput {
+ display: block;
+ width : 500px;
+ height : 250px;
+ margin : 0 auto;
+ text-align : center;
+}
+#findPwOutputH4{
+ text-align : center;
+ color : rgba(255,255,255,0.9);
+ position : relative;
+ top : 30px;
+ }
+#findPwOutputBtn{
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.6);
+ position : relative;
+ top : 30px;
+}
+ 
 </style>
 </head>
 <body>
@@ -19,10 +42,10 @@ div {
 <h4>${error }</h4>
 <a href="member.view/findPwForm.jsp">다시 입력하기</a>
 </c:if> --%>
-<div>
+<div id="findPwOutput">
 <c:if test="${!empty result }">
-<h4>${result }</h4>
-<input type="button" value="닫기" onclick=window.close()>
+<h4 id="findPwOutputH4">${result }</h4>
+<input id="findPwOutputBtn" type="button" value="닫기" onclick=window.close()>
 </c:if>
 </div>
 </body>
