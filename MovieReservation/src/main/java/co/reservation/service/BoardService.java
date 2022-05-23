@@ -17,9 +17,14 @@ public class BoardService {
 		return articleList;
 	}
 
-	public void addArticle(ArticleVO articleVO) {
-		// TODO Auto-generated method stub
-		
+	public void addArticle(ArticleVO article) {
+		boardDAO.insertNewArticle(article);
+	}
+
+	public ArticleVO viewArticle(int articleNO) {
+		ArticleVO article = null;
+		article = boardDAO.selectArticle(articleNO);
+		return article;
 	}
 
 	
