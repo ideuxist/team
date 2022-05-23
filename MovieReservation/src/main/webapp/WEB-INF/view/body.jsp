@@ -9,24 +9,29 @@
 	.poster_body{
 		width: 100%;
  		height: 100%;
-  	text-align: center;
+  	position: relative;
+		background-size: cover;
 	}
-	.poster_body::after{
-	width: 100%;
-  height: 100%;
-  content: "";
-  position: absolute;
-
+	.poster_body::before{
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+		z-index: 1;
 	}
 
 	.poster_img{
 		width: 300px;
 		height: 450px;
 		margin: 100px 20px 0 0;
-		z-index: 1;
+		z-index: 2;
 	}
 	#poster_div{
-		opacity: 1;
+		opacity: 2;
 		text-align: center;	
 	}
 	.poster_ul{
@@ -48,7 +53,7 @@
 		height : 40px;
 	}
 	.poster_div_btn_first{
-		margin-left: 320px;
+		margin-left: 200px;
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
 		border-bottom-left-radius: 5px;
