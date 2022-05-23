@@ -39,6 +39,19 @@
     <url-pattern>*.go</url-pattern>
   </servlet-mapping>
 
+   <servlet>
+    <servlet-name>board</servlet-name>
+    <servlet-class>co.reservation.web.BoardController</servlet-class>
+    <init-param>
+      <param-name>charset</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>board</servlet-name>
+    <url-pattern>*.boa</url-pattern>
+  </servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

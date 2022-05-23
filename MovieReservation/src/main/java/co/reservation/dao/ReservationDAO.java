@@ -120,22 +120,19 @@ public class ReservationDAO extends DAO {
 		return list;
 	}
 
-	public SeatReservedVO completReservation(String scrId,String selectedSeat) {
+	public SeatReservedVO completReservation(String scrId,String selectedSeat,String memberId) {
 		conn=getConn();
 		System.out.println(selectedSeat);
 		System.out.println(scrId);
 		int id = Integer.parseInt(scrId);
 		int seat = Integer.parseInt(selectedSeat);
-		System.out.println(id);
-		System.out.println(seat);
 		SeatReservedVO sr = new SeatReservedVO();
-		String sql = "update seat_reserved "
-				+ "set seat_reservation = 1 "
-				+ "where screening_id=? and seat_id=?";
+		String sql = "update seat_reserved set seat_reservation = 1,id=? where screening_id=? and seat_id=?";
 		try {
 			psmt=conn.prepareStatement(sql);
-			psmt.setInt(1, id);
-			psmt.setInt(2, seat);
+			psmt.setString(1, memberId);
+			psmt.setInt(2, id);
+			psmt.setInt(3, seat);
 			psmt.executeUpdate();
 			System.out.println("예약성공");
 			sr.setScreeningId(id);

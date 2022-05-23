@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.reservation.service.ReservationService;
 import co.reservation.vo.MovieVO;
@@ -40,7 +41,6 @@ public class ScreeningChoice extends HttpServlet {
 		if (action.equals("choiceDate")){
 			ReservationService service = new ReservationService();
 			List<ScreeningVO> dateList = service.choiceDate();
-			System.out.println(dateList);
 			request.setAttribute("seeDate", dateList);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 		
@@ -48,7 +48,6 @@ public class ScreeningChoice extends HttpServlet {
 			String date = request.getParameter("selectedDate");
 			ReservationService service = new ReservationService();
 			List<MovieVO> movieList = service.choiceMoive(date);
-			System.out.println(movieList);
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("movieList", movieList);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
@@ -61,19 +60,15 @@ public class ScreeningChoice extends HttpServlet {
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("selectedMovie", movie);
 			request.setAttribute("round", screening);
-			System.out.println(screening);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 			
 		}else if (action.equals("searchSeat")) {
 			String date = request.getParameter("date");
 			String movie = request.getParameter("movie");
 			String screeningId=request.getParameter("screeningID");
-			System.out.println(screeningId);
 			ReservationService service = new ReservationService();
 			ScreeningVO screening =service.searchAuditoriumId(screeningId);
 			List<SeatReservedVO> seat = service.choiceSeat(screeningId);
-			System.out.println("서블릿"+screening);
-			System.out.println(seat);
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("selectedMovie", movie);
 			request.setAttribute("selectedScreeningId", screeningId);
@@ -82,13 +77,17 @@ public class ScreeningChoice extends HttpServlet {
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 		
 		}else if (action.equals("doReservation")) {
+			HttpSession session = request.getSession();
+			
 			String date =request.getParameter("date");
 			String movie = request.getParameter("movie");
 			String startTime = request.getParameter("round");
 			String scrId=request.getParameter("selectedScreeningId");
 			String selectedSeat = request.getParameter("selectedSeat");
+			String memberId=(String) session.getAttribute("id");
+			System.out.println(memberId);
 			ReservationService service = new ReservationService();
-			SeatReservedVO sr = service.reservation(scrId,selectedSeat);
+			SeatReservedVO sr = service.reservation(scrId,selectedSeat,memberId);
 			System.out.println(sr);
 			request.setAttribute("seldate", date);
 			request.setAttribute("selmovie", movie);

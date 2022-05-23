@@ -48,6 +48,7 @@ public class DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	System.out.println("연결종료");
 	}
 
 }
