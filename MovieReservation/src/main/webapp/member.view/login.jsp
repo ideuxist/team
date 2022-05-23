@@ -63,7 +63,7 @@ function openFindPw() {
   <h3 class="loginH3">${result }</h3>
   
   <form action="${pageContext.servletContext.contextPath }/memberSearch.do" method="post">
-  <input class="loginInput" type="text" name="id" placeholder="아이디" autocomplete="off"><br>
+  <input class="loginInput" type="text" name="id" placeholder="아이디" autocomplete="off"><br>	
   <input class="loginInput" type="password" name="passwd" placeholder="비밀번호" autocomplete="off"><br>
   <input type="hidden" name="job" value="search">
   <input id="loginBtn" type="submit" value="로그인"><br>
