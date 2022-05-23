@@ -29,16 +29,19 @@ public class InfoController extends HttpServlet {
 		list = new HashMap<String, Control>();
 
 		// commnet
-		list.put("/commentAdd.go", new CmAddControl());
-		list.put("/commnetList.go", new CmListControl());
-		list.put("/commentDel.go", new CmDelControl());
-		list.put("/commnetPage.go", new CmPageControl());
+		list.put("/commentAdd.do", new CmAddControl());
+		list.put("/commnetList.do", new CmListControl());
+		list.put("/commentDel.do", new CmDelControl());
+		list.put("/commnetPage.do", new CmPageControl());
 		
 		// likes and rating
-		list.put("/getIndivLike.go", new IndivLikeGetControl());
-		list.put("/getLikes.go", new LikesGetControl());
-		list.put("/getRating.go", new RatingGetControl());
-		list.put("/clickLike.go", new LikeControl());
+		list.put("/getIndivLike.do", new IndivLikeGetControl());
+		list.put("/getLikes.do", new LikesGetControl());
+		list.put("/getRating.do", new RatingGetControl());
+		list.put("/clickLike.do", new LikeControl());
+		
+		// payment
+		list.put("/payment.do", new PayControl());
 		
 	}
 
