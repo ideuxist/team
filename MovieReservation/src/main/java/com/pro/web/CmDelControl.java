@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pro.service.CommentService;
+import com.pro.service.InfoService;
 
 public class CmDelControl implements Control {
 	
@@ -17,7 +17,7 @@ public class CmDelControl implements Control {
 		
 		String code = request.getParameter("code");
 		
-		CommentService service = new CommentService();
+		InfoService service = new InfoService();
 		
 		service.delComment(code);
 			

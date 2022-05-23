@@ -5,6 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#modifyFrm {
+ position : relative;
+ top : -100px;
+}
+#modifyH3 {
+ text-align : center;
+ color : rgba(255,255,255,0.6);
+}
+.modifyInput {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 1;
+  background: transparent;
+  padding : 15px;
+  color : white;
+}
+#modSubBtn {
+ position : relative;
+ bottom : -20px;
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
+}
+#modDelBtn {
+ position : relative;
+ bottom : -20px;
+ border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
+}
+
+</style>
 <script type="text/javascript">
 function delConfirm() {
 	alert("정말 탈퇴하시겠습니까?")
@@ -12,17 +48,18 @@ function delConfirm() {
 </script>
 </head>
 <body>
-  <h3>정보수정</h3>
+  <div id="modifyFrm">
+  <h3 id="modifyH3">수정할 정보를 재입력하세요</h3>
   <form action="${pageContext.servletContext.contextPath }/memberUpdate.do" method="post" >
-  <input type="password" name="passwd" value=${member.passwd }><br>
-  <input type="email" name="email" value=${member.email }><br>
+  <input class="modifyInput" type="password" name="passwd"value=${member.passwd }><br>
+  <input class="modifyInput" type="email" name="email" value=${member.email }><br>
   <input type="hidden" name="id" value=${member.id }><br>
-  <input type="submit" value="변경"><br>
+  <input id="modSubBtn" type="submit" value="변경"><br>
  </form>
-<hr>
   <form action="${pageContext.servletContext.contextPath }/memberDelete.do" method="post" onsubmit="return delConfirm()">	
   <input type="hidden" name="id" value=${member.id }><br>
-  <input type="submit" value="회원탈퇴"><br>  
+  <input id="modDelBtn" type="submit" value="회원탈퇴"><br>  
   </form> 
  </body>
+ </div>
 </html>

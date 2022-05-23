@@ -6,36 +6,60 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div {
- padding : 20px;
+body {
+  margin-top : 50px;
+  background : rgba(0,0,0,0.9);
 }
-h4 {
+#container {
+  display : block;
+  width : 500px;
+  height : 250px;
+  text-align : center;
+  margin : 0 auto;
+}
+
+#findPwFrmH4 {
  text-align : center;
+ color : rgba(255,255,255,0.6);
 }
-hr {
- margin-bottom : 30px;
-}
-h5 {
- color : red;
+#findPwFrmH5 {
  text-align : center;
+ color : rgba(255,255,255,0.9);
 }
 form {
  margin : 0 auto;
 }
-input {
- padding : 5px;
+.findPwInput {
+ padding : 10px;
+ border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 1;
+  background: transparent;
+  color : white;
 }
+
+#subBtn {
+   position : relative;
+  top : 50px;
+  right : 0px;
+  border : none;
+ border-radius : 10px;
+ background-color : rgba(255,255,255,0.2);
+ color : rgba(255,255,255,0.4);
+}
+
 </style>
 </head>
 <body>
-<h4>가입 시 입력한 아이디와 이메일 주소를 입력하세요</h4>
-<h4>비밀번호는 메일로 전송되며, 잠시만 기다려주세요</h4>
-<hr>
-<h5>${error }</h5>
+<div id="container">
+<h4 id="findPwFrmH4">입력 후 잠시만 기다려주세요. 비밀번호는 메일로 전송됩니다.</h4>
+<h5 id="findPwFrmH5">${error }</h5>
 <form action="${pageContext.servletContext.contextPath }/memberFindPw.do" method="post">
-아이디 <input type="text" name="id"><br>
-이메일 <input type="email" name="email"><br>
-<input type="submit" value="메일전송">
+<input class="findPwInput" type="text" name="id" placeholder="아이디" autocomplete="off" required><br>
+<input class="findPwInput" type="email" name="email" placeholder="이메일" autocomplete="off" required><br>
+<input id ="subBtn" type="submit" value="메일전송">
 </form>
+</div>
 </body>
 </html>

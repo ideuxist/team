@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.pro.service.CommentService;
+import com.pro.service.InfoService;
 import com.pro.vo.MemberVO;
 import com.pro.vo.PageVO;
 
@@ -28,7 +28,7 @@ public class CmListControl implements Control {
 		pv.setPage(Integer.parseInt(request.getParameter("page")));
 		pv.setMovieId(Integer.parseInt(request.getParameter("movieId")));
 		
-		CommentService service = new CommentService();
+		InfoService service = new InfoService();
 		List<MemberVO> list = service.listComment(pv);
 
 		PrintWriter out = response.getWriter();
@@ -47,9 +47,6 @@ public class CmListControl implements Control {
 			
 			ary.put(jo);
 		}
-		
-		System.out.println(ary);
-
 		out.print(ary);
 		out.close();
 	}

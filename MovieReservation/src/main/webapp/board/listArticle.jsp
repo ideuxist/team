@@ -69,7 +69,7 @@
 	</c:when>
 </c:choose>
 </table>
-<a  class="cls1"  href="${pageContext.servletContext.contextPath}/BoardController"><p class="cls2">글쓰기</p></a>
+<a  class="cls1"  href="${pageContext.servletContext.contextPath}/boardController/"><p class="cls2">글쓰기</p></a>
 
 	<body>
 

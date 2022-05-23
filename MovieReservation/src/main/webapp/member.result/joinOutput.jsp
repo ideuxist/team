@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#joinOp {
+ position : relative;
+ top : - 100px;
+}
+</style>
 </head>
 <body>
-<h3>회원가입이 완료되었습니다</h3>
-
+<h3 id="joinOp">회원가입이 완료되었습니다</h3>
 </body>
 </html>

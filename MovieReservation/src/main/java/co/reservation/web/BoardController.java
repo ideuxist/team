@@ -23,7 +23,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import co.reservation.service.BoardService;
 import co.reservation.vo.ArticleVO;
-@WebServlet("/board/*")
+@WebServlet("/boardController.boa")
 public class BoardController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -54,7 +54,6 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String action = request.getPathInfo(); // 요청명 가져오기
-		System.out.println("action" + action);
 		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -62,17 +61,23 @@ public class BoardController extends HttpServlet {
 
 			if (action == null) {
 				// action 값이 널값이라도 db에서 list 받아옴
+				System.out.println("action null 일때");
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board/listArticle.tiles";
-			} else if (action.equals("/listAricles.do")) {
-				// action 값이 .do 이면 전체글 조회
+				System.out.println("action null일때"+nextPage);
+			
+			} else if (action.equals("/list")) {
+				// action 값이 list 이면 전체글 조회
 				articlesList = boardService.listArticles();// 전체글 조회
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board/listAricle.tiles";
-			  
-			} else if(action.equals("/addArticle.do")) {
-				nextPage="/board/articleForm.tiles";
+				nextPage ="listArticle.tiles";
+				System.out.println("action list일때"+nextPage);
+				System.out.println(articlesList);
+			
+			} else if(action.equals("/addArticle")) {
+				nextPage="articleForm.tiles";
+			
 			
 			} else if (action.equals("/addArticle.do")) {
 				Map<String,String> articleMap = upload(request, response); 
@@ -86,8 +91,9 @@ public class BoardController extends HttpServlet {
 				articleVO.setContent(content);
 				articleVO.setImageFileName(imageFileName);
 				boardService.addArticle(articleVO);
-				nextPage="/board/listArticle.tiles";
+				nextPage="listArticle.tiles";
 			}
+				System.out.println(nextPage);
 				RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 				dispatch.forward(request, response);
 		} catch (Exception e) {

@@ -4,6 +4,7 @@
 	<artifactId>MovieReservation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -20,7 +21,7 @@
 		<dependency>
 	    	<groupId>org.apache.tiles</groupId>
 	    	<artifactId>tiles-jsp</artifactId>
-	    	<version>3.0.8</version>
+	    	<version>3.0.8</version> 
 	    </dependency>
 	    <dependency>
 	    	<groupId>org.apache.tiles</groupId>
@@ -51,7 +52,25 @@
   			  <artifactId>ojdbc10</artifactId>
   			  <version>19.12.0.0</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki -->
+		<dependency>
+		    <groupId>com.oracle.database.security</groupId>
+		    <artifactId>oraclepki</artifactId>
+		    <version>21.5.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
+		<dependency>
+		    <groupId>com.oracle.database.security</groupId>
+		    <artifactId>osdt_cert</artifactId>
+		    <version>21.5.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core -->
+		<dependency>
+		    <groupId>com.oracle.database.security</groupId>
+		    <artifactId>osdt_core</artifactId>
+		    <version>21.5.0.0</version>
+		</dependency>
+
 			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
@@ -64,10 +83,17 @@
 		    <artifactId>json</artifactId>
 		    <version>20180813</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload --> 
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
+
 	</dependencies>
 	
 
-	
+	 
 	
 	<build>
 		<plugins>

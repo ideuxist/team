@@ -6,17 +6,18 @@
 <meta charset="UTF-8">
 <title>title</title>
 <style>
-	body{
+	#title{
+		background-color: black;
 		text-align : center;
+		color:white;
+		font-family: 'Noto Sans KR', sans-serif;
+		height: 80px;
 	} 
-	a{
-		color : white;
-		text-decoration-line: none;
-	}
+
 	
 </style>
 </head>
 <body>
-	<a href="/MovieReservation/"><h1>NEGABOX</h1></a>
+	<a href="/MovieReservation/"><h1 id = "title">NEGABOX</h1></a>
 </body>
 </html>
