@@ -23,7 +23,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import co.reservation.service.BoardService;
 import co.reservation.vo.ArticleVO;
-@WebServlet("/BoardController")
+@WebServlet("/boardController")
 public class BoardController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +36,7 @@ public class BoardController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		boardService = new BoardService();
+		articleVO=new ArticleVO();
 	}
 
 	@Override
@@ -53,8 +54,10 @@ public class BoardController extends HttpServlet {
 		String nextPage = "";
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		String action = request.getPathInfo(); // 요청명 가져오기
-		System.out.println("action" + action);
+		//String action = request.getPathInfo(); // 요청명 가져오기
+		String url = request.getRequestURI();
+		String context = request.getContextPath();
+		String action = url.substring(context.length());
 		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -65,29 +68,35 @@ public class BoardController extends HttpServlet {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
 				nextPage = "/board/listArticle.tiles";
-			} else if (action.equals("/listArticles.do")) {
-				// action 값이 .do 이면 전체글 조회
+			
+			} else if (action.equals("/boardController.boa")) {
+				// action 값이 list 이면 전체글 조회
 				articlesList = boardService.listArticles();// 전체글 조회
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board/listAricle.tiles";
-			  
-			} else if(action.equals("/articleForm.jsp")) {
+				nextPage ="/board/listArticle.tiles";
+			
+			} else if(action.equals("/board/addArticle.boa")) {
 				nextPage="/board/articleForm.tiles";
 			
-			} else if (action.equals("/addArticle.do")) {
+			} else if (action.equals("/board/addArticlesubmit.boa")) {
 				Map<String,String> articleMap = upload(request, response); 
 				String title = articleMap.get("title");
 				String content = articleMap.get("content");
 				String imageFileName = articleMap.get("imageFileName");
-				
 				articleVO.setParentNO(0);
 				articleVO.setId(id);
 				articleVO.setTitle(title);
 				articleVO.setContent(content);
 				articleVO.setImageFileName(imageFileName);
 				boardService.addArticle(articleVO);
-				nextPage="/board/listArticle.tiles";
+				nextPage="/boardController.boa";
+			}else if(action.equals("/board/viewArticle.boa")){
+				String acticleNO = request.getParameter("articleNO");
+				articleVO=boardService.viewArticle(Integer.parseInt(acticleNO));
+				request.setAttribute("article", articleVO);
+				nextPage="/board/viewArticle.tiles";
 			}
+				System.out.println(nextPage);
 				RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 				dispatch.forward(request, response);
 		} catch (Exception e) {
