@@ -8,7 +8,10 @@
 <style>
 #relogin {
  position : relative;
- top : -100px;
+ top : 100px;
+ width : 600px;
+ height : 400px;
+ margin : 0 auto;
 }
 .reloginInput {
   padding : 15px;
@@ -23,9 +26,10 @@
  position : relative;
  bottom : -20px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
  
 </style>

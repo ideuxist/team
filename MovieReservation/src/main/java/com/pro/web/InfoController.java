@@ -56,7 +56,6 @@ public class InfoController extends HttpServlet {
 
 		Control exeCon = list.get(path);
 		exeCon.execute(req, resp);
-
 	}
 
 }
