@@ -15,7 +15,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+<<<<<<< HEAD
 			<attribute name="module" value="true"/>
+=======
+>>>>>>> branch 'kwon' of https://github.com/ideuxist/team.git
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
