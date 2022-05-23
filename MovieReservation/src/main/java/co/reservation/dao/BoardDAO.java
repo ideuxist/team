@@ -73,8 +73,9 @@ public class BoardDAO extends DAO{
 
 	public void insertNewArticle(ArticleVO article) {
 		try {
-			conn=dataFactory.getConnection();
 			int articleNO=getNewArticleNO();
+			conn=getConn();
+			System.out.println(articleNO);
 			int parentNO = article.getParentNO();
 			String title = article.getTitle();
 			String content = article.getContent();
@@ -87,8 +88,8 @@ public class BoardDAO extends DAO{
 			psmt.setInt(2, parentNO);
 			psmt.setString(3, title);
 			psmt.setString(4,content);
-			psmt.setString(5, id);
-			psmt.setString(6,imageFileName);
+			psmt.setString(5,imageFileName);
+			psmt.setString(6, id);
 			psmt.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -96,6 +97,39 @@ public class BoardDAO extends DAO{
 		}finally {
 			disconn();
 		}
+	}
+
+	public ArticleVO selectArticle(int articleNO) {
+	ArticleVO article= new ArticleVO();
+	conn=getConn();
+	String sql = "select articleno,parentno,title,content,imagefilename,id,writedate from free_board where articleno=?";
+	try {
+		psmt= conn.prepareStatement(sql);
+		psmt.setInt(1, articleNO);
+		rs=psmt.executeQuery();
+		rs.next();
+		int _articleNO=rs.getInt("articleno");
+		int parentNO=rs.getInt("parentno");
+		String title=rs.getString("title");
+		String content = rs.getString("content");
+		String imageFileName = rs.getString("imagefilename");
+		String id = rs.getString("id");
+		Date writeDate=rs.getDate("writedate");
+		
+		article.setArticleNO(_articleNO);
+		article.setParentNO(parentNO);
+		article.setTitle(title);
+		article.setContent(content);
+		article.setImageFileName(imageFileName);
+		article.setId(id);
+		article.setWriteDate(writeDate);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		disconn();
+	}
+	return article;
 	}
 
 }
