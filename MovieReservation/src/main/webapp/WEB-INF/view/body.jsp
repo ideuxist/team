@@ -6,6 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	.poster_body{
+		width: 100%;
+ 		height: 100%;
+  	text-align: center;
+	}
+	.poster_body::after{
+	width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+
+	}
 
 	.poster_img{
 		width: 300px;

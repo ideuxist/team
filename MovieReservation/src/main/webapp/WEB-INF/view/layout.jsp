@@ -9,8 +9,9 @@
     	
     	body{
     		color: white;
-				background:  #444;
+				background:  black;
 				z-index: 0;
+				text-align: center;
     	}
 
 		a{
