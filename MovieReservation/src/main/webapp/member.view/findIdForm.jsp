@@ -51,9 +51,10 @@ form {
   top : 80px;
   right : 110px;
   border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
 
 </style>

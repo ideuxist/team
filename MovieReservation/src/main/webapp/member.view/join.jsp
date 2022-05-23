@@ -13,10 +13,8 @@ fieldset {
  height : 400px;
  margin : 0 auto;
  position : relative;
- top: -150px;
  border : none;
 }
-
 #joinFrm {
  width : 500px;
  height : 300px;
@@ -39,9 +37,10 @@ fieldset {
  bottom : 222px;
  left : 120px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
 
 .joinFrmBtn {
@@ -49,9 +48,10 @@ fieldset {
  bottom : -40px;
  left : -150px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
 
 
