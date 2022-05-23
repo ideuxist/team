@@ -3,12 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
   <head>
-    <title>main</title>
+    <title>다양한 영화를 한번에! NEGABOX</title>
     <style>
     	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
     	
     	body{
     		color: white;
+				background:  black;
+				z-index: 0;
+				text-align: center;
     	}
 
 		a{

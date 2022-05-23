@@ -40,7 +40,7 @@
 	<form action ="${pageContext.servletContext.contextPath}/member.view/login.tiles" method = "post">
 	<input type ="submit" value ="로그인" >
 	<a href='javascript:void(0);' onclick="openFindId();">아이디 찾기</a>
-  <a href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
+  	<a href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
 	</form>
 	<form action = "${pageContext.servletContext.contextPath}/member.view/join.tiles" method = "post">
 		<input type = "submit" value = "회원가입">
