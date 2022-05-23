@@ -28,34 +28,44 @@ public class InfoController extends HttpServlet {
 
 		list = new HashMap<String, Control>();
 
-		// commnet
-		list.put("/commentAdd.do", new CmAddControl());
-		list.put("/commnetList.do", new CmListControl());
-		list.put("/commentDel.do", new CmDelControl());
-		list.put("/commnetPage.do", new CmPageControl());
+		// comment
+		list.put("/commentAdd.go", new CmAddControl());
+		list.put("/commentList.go", new CmListControl());
+		list.put("/commentDel.go", new CmDelControl());
+		list.put("/commentPage.go", new CmPageControl());
 		
 		// likes and rating
-		list.put("/getIndivLike.do", new IndivLikeGetControl());
-		list.put("/getLikes.do", new LikesGetControl());
-		list.put("/getRating.do", new RatingGetControl());
-		list.put("/clickLike.do", new LikeControl());
+		list.put("/getIndivLike.go", new IndivLikeGetControl());
+		list.put("/getLikes.go", new LikesGetControl());
+		list.put("/getRating.go", new RatingGetControl());
+		list.put("/clickLike.go", new LikeControl());
 		
 		// payment
-		list.put("/payment.do", new PayControl());
+		list.put("/payment.go", new PayControl());
+		
+		System.out.println("pass init");
 		
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		System.out.println("into service");
+		
 		req.setCharacterEncoding(charset);
 
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
+		
+		System.out.println(uri + "1");
+		System.out.println(context + "2");
+		System.out.println(path + "3");
 
 		Control exeCon = list.get(path);
+		System.out.println("pass service");
 		exeCon.execute(req, resp);
+		
 
 	}
 

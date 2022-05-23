@@ -73,9 +73,7 @@
 		  //속성값 넣기
 	      imgTag.setAttribute('src', poster);
 			console.log(movie_id);
-	      a.href = "./movieInfo.html?movieId="+movie_id;
-
-				
+	      a.href = "./movieInfo/movieInfo.tiles?movieId="+movie_id;
 	    }
 	  })
 	  .catch(error => console.log(error));

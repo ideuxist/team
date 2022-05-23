@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,17 +15,6 @@
 
 <body>
     <div id="mainContainer">
-        <!-- <div class="container">
-            <div class="poster"></div>
-            <div class="title"></div>
-            <div class="release"></div>
-            <div class="rating">
-                <div id="ratingDiv">
-                    NEGABOX 평점
-                    <div id="rating"></div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <script>
@@ -39,9 +31,8 @@
             fetch(url)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res);
-
                     let ary = res.results;
+                    let count = 1;
                     ary.forEach(Element => {
                         console.log(Element);
 
@@ -68,9 +59,9 @@
                         container.appendChild(posterDiv);
 
                         let title = Element.title;
-                        let h1 = document.createElement('h1');
-                        h1.innerHTML = title;
-                        titleDiv.appendChild(h1);
+                        let h2 = document.createElement('h2');
+                        h2.innerHTML = title;
+                        titleDiv.appendChild(h2);
                         container.appendChild(titleDiv);
 
                         let relDate = Element.release_date;
@@ -79,41 +70,15 @@
                         relDateDiv.appendChild(h3);
                         container.appendChild(relDateDiv);
 
-                        getRating(Element.id);
-
                         container.addEventListener('click', e => {
                             let url = `movieInfo.html?movieId=${Element.id}`;
                             window.open(url);
                         })
-
                         mainContainer.appendChild(container);
                     });
 
                 })
         }
-
-        // rating section
-
-        function getRating(id) {
-            let url = `getRating.do`;
-
-            fetch(url, {
-                method: 'post',
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `movieId=${id}`
-            })
-                .then(res => res.json())
-                .then(res => {
-                    let ratingDiv = document.createElement('div');
-                    let a = document.createElement('a');
-                    a.innerHTML = `${res.rating}`;
-                    ratingDiv.appendChild(a);
-                    container.appendChild(ratingDiv);
-                })
-        }
-
         searchMovie();
     </script>
 </body>

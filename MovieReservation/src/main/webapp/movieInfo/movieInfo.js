@@ -1,3 +1,5 @@
+console.log('hello!');
+
 // data for API and parameter
 let key = "6446bae76aaffa9af6d4c00b2299f016";
 let srcPara = new URL(location.href).searchParams;
@@ -50,8 +52,7 @@ function getCredits(id) {
 
     fetch(url)
         .then(res => res.json())
-        .then(res => {
-        })
+        .then(res => {})
 }
 
 // get trailer
@@ -79,15 +80,15 @@ let totNumPages = 0;
 let pagination = document.getElementById('pagination');
 
 function makePage() {
-    let url = `commnetPage.do`;
+    let url = `../commentPage.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}`
+        })
         .then(res => res.json())
         .then(res => {
             totNumPages = Math.ceil(res.count / 5);
@@ -136,14 +137,14 @@ let table = document.getElementById('cmtTable');
 function showComment(page) {
     table.innerHTML = "";
 
-    let url = `commnetList.do`;
+    let url = `../commentList.go`;
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&page=${page}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}&page=${page}`
+        })
         .then(res => res.json())
         .then(res => {
             res.forEach(element => {
@@ -190,14 +191,14 @@ function showComment(page) {
 }
 
 function delComment(val) {
-    let url = `commentDel.do`;
+    let url = `../commentDel.go`;
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `code=${val}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `code=${val}`
+        })
         .then(res => {
             makePage();
             showComment(1);
@@ -207,7 +208,7 @@ function delComment(val) {
 }
 
 function addComment() {
-    let url = `commentAdd.do`;
+    let url = `../commentAdd.go`;
 
     let addBtn = document.getElementById('addBtn');
     addBtn.addEventListener('click', e => {
@@ -222,12 +223,12 @@ function addComment() {
         })
 
         fetch(url, {
-            method: 'post',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `comment=${comment}&stars=${val}&movieId=${movieId}`
-        })
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `comment=${comment}&stars=${val}&movieId=${movieId}`
+            })
             .then(res => {
                 document.getElementById('area').value = "";
                 stars.forEach(element => {
@@ -245,15 +246,15 @@ function addComment() {
 let ratingDiv = document.getElementById('ratingDiv')
 
 function getRating() {
-    let url = `getRating.do`;
+    let url = `../getRating.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}`
+        })
         .then(res => res.json())
         .then(res => {
             let a = document.createElement('a');
@@ -276,7 +277,7 @@ likesDiv.addEventListener('click', e => {
 
 // invoke individual like
 function clickLike() {
-    let url = `clickLike.do`;
+    let url = `../clickLike.go`;
 
     fetch(url, {
         method: 'post',
@@ -289,15 +290,15 @@ function clickLike() {
 
 // processing individual like
 function getIndivLike() {
-    let url = `getIndivLike.do`;
+    let url = `../getIndivLike.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&id=${sessionId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}&id=${sessionId}`
+        })
         .then(res => res.json())
         .then(res => {
             indivLike = res.indivLike;
@@ -305,15 +306,15 @@ function getIndivLike() {
 }
 
 function getLikes() {
-    let url = `getLikes.do`;
+    let url = `../getLikes.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}`
+        })
         .then(res => res.json())
         .then(res => {
             likeCount.innerHTML = `${res.likes}`;

@@ -30,5 +30,6 @@ public class LikeControl implements Control {
 		} else if (slv.getIndivLike() == 1) {
 			service.unLike(slv);
 		}
+		
 	}
 }

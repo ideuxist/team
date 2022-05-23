@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +27,6 @@
             </div>
             <div id="overview"></div>
             <div id="btnSet">
-
                 <div id="likesDiv">
                     좋아요
                     <div id="likeCount"></div>
@@ -63,11 +65,10 @@
             </div>
             <input id="addBtn" type="button" value="입력">
         </div>
-        <div class=" rel">
-        </div>
         <div class="trailer"></div>
     </div>
-    <script type="text/javascript" src="movieInfo.js"></script>
+    <script type="text/javascript" src="movieInfo.js">
+    </script>
 </body>
 
 </html>

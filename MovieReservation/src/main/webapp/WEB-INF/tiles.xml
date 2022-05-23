@@ -12,7 +12,6 @@
     <put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
   </definition>
 
-
   <definition name = "WILDCARD:*/*" extends = "myapp.homepage">
   	<put-attribute name = "body" value = "/{1}/{2}.jsp"></put-attribute>
   </definition>

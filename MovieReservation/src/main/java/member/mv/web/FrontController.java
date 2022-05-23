@@ -33,8 +33,13 @@ public class FrontController extends HttpServlet{
 		String url = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = url.substring(context.length());
+		
+		System.out.println(url + context + path);
+		
 		Control exeCon = list.get(path);
+		
 		System.out.println(path);
+		
 		exeCon.execute(req, resp);
 	}
 	
