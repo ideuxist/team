@@ -93,6 +93,7 @@ public class ScreeningChoice extends HttpServlet {
 			request.setAttribute("selmovie", movie);
 			request.setAttribute("selround", startTime);
 			request.setAttribute("reserInfo",sr);
+			request.setAttribute("selseat", selectedSeat);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 			}
 		}

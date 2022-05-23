@@ -93,7 +93,7 @@
 					  </c:if>
 					  </c:when>
 					  <c:otherwise>
-					  <td><input type="checkbox" name="selectedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번 (예약석)</td>
+					  <td>${seat.seatId}번 (예약석)</td>
 					  <c:if test="${seat.seatId==20}">
 					  </tr>
 					  </c:if>
@@ -106,8 +106,6 @@
 			
 			</table>
 				<div></div>
-	<div class="seat-wrapper"></div> 
-	
 			<input type="submit" value="예매하기"><br><br>
 		  <input type="hidden" name="choice" value="doReservation">
 		</form>
@@ -115,7 +113,7 @@
 		<c:when test="${empty seldate}">
 		</c:when>
 		<c:otherwise>
-	  <h1>${seldate} / ${selmovie} / ${selround} 예매 되었습니다 </h1>
+	  <h1>${seldate} / ${selmovie} / ${selround} /${selseat }번 좌석이 예매 되었습니다 </h1>
 	  </c:otherwise>
 	  </c:choose>	
 <%} else{%>
