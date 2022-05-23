@@ -4,7 +4,8 @@ console.log('hello!');
 let key = "6446bae76aaffa9af6d4c00b2299f016";
 let srcPara = new URL(location.href).searchParams;
 let movieId = srcPara.get('movieId');
-let sessionId = 'testId';
+
+console.log(sessionId);
 
 // tag collection
 let posterDiv = document.querySelector('.poster');
@@ -94,13 +95,14 @@ function makePage() {
             totNumPages = Math.ceil(res.count / 5);
             pagination.innerHTML = "";
             for (let i = 1; i <= totNumPages; i++) {
-                let a = document.createElement('a');
-                a.innerHTML = ` ${i} `;
-                a.href = '#';
-                a.addEventListener('click', e => {
+                let btn = document.createElement('input');
+                btn.setAttribute("type", "button");
+                btn.setAttribute("class", "pageBtn");
+                btn.value = ` ${i} `;
+                btn.addEventListener('click', e => {
                     showComment(i);
                 })
-                pagination.appendChild(a);
+                pagination.appendChild(btn);
             }
         })
 }
@@ -207,11 +209,18 @@ function delComment(val) {
         })
 }
 
-function addComment() {
-    let url = `../commentAdd.go`;
+// add comment section
+let addBtn = document.getElementById('addBtn');
+addBtn.addEventListener('click', addComment);
 
-    let addBtn = document.getElementById('addBtn');
-    addBtn.addEventListener('click', e => {
+function addComment() {
+    if (sessionId == '') {
+        alert("로그인하세욧!");
+    } else {
+        console.log(sessionId);
+
+        let url = `../commentAdd.go`;
+
         let comment = document.getElementById('area').value;
         let stars = document.querySelectorAll('.star-rating>input');
         let val;
@@ -227,7 +236,7 @@ function addComment() {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: `comment=${comment}&stars=${val}&movieId=${movieId}`
+                body: `comment=${comment}&stars=${val}&movieId=${movieId}&id=${sessionId}`
             })
             .then(res => {
                 document.getElementById('area').value = "";
@@ -239,7 +248,9 @@ function addComment() {
                 ratingDiv.innerHTML = "";
                 getRating();
             })
-    })
+
+
+    }
 }
 
 // Rating setion
@@ -277,15 +288,19 @@ likesDiv.addEventListener('click', e => {
 
 // invoke individual like
 function clickLike() {
-    let url = `../clickLike.go`;
+    if (sessionId == '') {
+        alert("로그인하세욧!");
+    } else {
+        let url = `../clickLike.go`;
 
-    fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&id=${sessionId}&bool=${indivLike}`
-    })
+        fetch(url, {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}&id=${sessionId}&bool=${indivLike}`
+        })
+    }
 }
 
 // processing individual like
@@ -325,7 +340,6 @@ function infoPage() {
     getMovie();
     getCredits();
     makePage();
-    addComment();
     showComment(current_page);
     getIndivLike();
     getLikes();

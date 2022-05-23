@@ -43,27 +43,19 @@ public class InfoController extends HttpServlet {
 		// payment
 		list.put("/payment.go", new PayControl());
 		
-		System.out.println("pass init");
 		
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		System.out.println("into service");
 		
 		req.setCharacterEncoding(charset);
 
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
-		
-		System.out.println(uri + "1");
-		System.out.println(context + "2");
-		System.out.println(path + "3");
 
 		Control exeCon = list.get(path);
-		System.out.println("pass service");
 		exeCon.execute(req, resp);
 		
 
