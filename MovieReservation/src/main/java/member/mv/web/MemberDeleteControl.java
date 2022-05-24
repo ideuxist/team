@@ -19,7 +19,7 @@ public class MemberDeleteControl implements Control {
 		service.memberDelete(id);
 		
 		request.setAttribute("id", id);
-		request.getRequestDispatcher("member.result/deleteOutput.tiles").forward(request, response);
+		request.getRequestDispatcher("/member.result/deleteOutput.tiles").forward(request, response);
 	}
 
 }

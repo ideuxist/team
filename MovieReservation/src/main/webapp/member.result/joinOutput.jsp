@@ -8,11 +8,14 @@
 <style>
 #joinOp {
  position : relative;
+ width : 600px;
+ height : 500px;
+ margin : 0 auto;
  top : 100px;
 }
 </style>
 </head>
 <body>
-<h3 id="joinOp">회원가입이 완료되었습니다</h3>
+<h3 id="joinOp">가입을 환영합니다!</h3>
 </body>
 </html>

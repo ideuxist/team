@@ -85,7 +85,7 @@ function openFindPw() {
   <br>
   <br>
   <br>
-  NEGABOX가 처음이신가요? <a id="loginA2" href="join.tiles">회원가입</a>
+  NEGABOX가 처음이신가요? <a id="loginA2" href="${pageContext.servletContext.contextPath }/member.view/join.tiles">회원가입</a>
  </div>
 </body>
 </html>
