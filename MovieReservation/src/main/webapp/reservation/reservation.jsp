@@ -125,7 +125,8 @@ th, td {
 					  </c:if>
 					  </c:when>
 					  <c:otherwise>
-					  <td><input type="checkbox" name="selectedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번(x)</td>
+					  <td><input type="checkbox" name="s
+					  electedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번(x)</td>
 					  <c:if test="${seat.seatId==20}">
 					  </tr>
 					  </c:if>
