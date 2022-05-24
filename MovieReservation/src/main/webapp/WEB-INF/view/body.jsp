@@ -9,10 +9,11 @@ pageEncoding="UTF-8"%>
 
 #poster_background{
 	background-size: cover;
+	position: relative;
 }
 
 #poster_body{
-   background: rgba(0,0,0,0.8);
+   background: rgba(0,0,0,0.7);
   position: relative;	
 }
 
@@ -34,10 +35,11 @@ pageEncoding="UTF-8"%>
 	display: inline-block;
 }
 #poster_btn{
-	margin : 0 0 40px 0;
+	margin : 0 20px 40px 0;
 }
+
 .poster_div_btn{
-	margin-left: 120px;
+	margin-left: 20px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -50,7 +52,7 @@ pageEncoding="UTF-8"%>
 	position: relative;
 }
 .poster_div_btn_first{
-	margin-left: 80px;
+	margin-left: 20px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -63,14 +65,33 @@ pageEncoding="UTF-8"%>
 	position: relative;
 }
 
-.poster_textNumber{
-	 z-index: 100;
- 	 color: white;
- 	 font-size: 24px;
- 	 font-weight: bold;
- 	 left: 150px;
- 	 top: 500px;
+.poster_like_btn_first{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 80px;
+	height: 40px;
+	border: 3px solid #f199bc;
+  color: #6e6e6e;
 }
+.poster_like_btn_first :hover{
+	background-color: #f199bc;
+  color: #d4dfe6;
+}
+
+
+.poster_like_btn{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 80px;
+	height: 40px;
+	margin-left: 20px;
+}
+
+
 
 </style>
 </head>
@@ -140,10 +161,7 @@ fetch(popularityURL)
 	  div.appendChild(ul);
 	
 	  // 순위 번호 생성
-	  let p = document.createElement('p');
-	  p.setAttribute('class', 'poster_textNumber');
-	  p.innerHTML = i+1;
-	  a.appendChild(p);
+
 		
 	}
 	
@@ -151,22 +169,33 @@ fetch(popularityURL)
 	for(let i = 0; i <4; i++){
 		//poster_btn 만들기
 		let input = document.createElement('input');
+		let input_like=document.createElement('input');
 		let poster_btn = document.getElementById('poster_btn');
 		let poster_form = document.getElementById('poster_form');
 		//속성 부여
 		// input -> poster_btn -> poster_
 		if(i == 0){
+		input_like.setAttribute('type','button');
+		input_like.setAttribute('class','poster_like_btn_first');
+		input_like.setAttribute('title','좋아요 버튼');
+		input_like.setAttribute('value','좋아요');
 		input.setAttribute('type', 'submit');
 		input.setAttribute('class', 'poster_div_btn_first');
 		input.setAttribute('title', '영화 예매');
 		input.setAttribute('value', '예매');
+		poster_btn.appendChild(input_like);
 		poster_btn.appendChild(input);
 		poster_form.appendChild(poster_btn);
 		} else {
+		input_like.setAttribute('type','button');
+		input_like.setAttribute('class','poster_like_btn');
+		input_like.setAttribute('title','좋아요 버튼');
+		input_like.setAttribute('value','좋아요');
 		input.setAttribute('type', 'submit');
 		input.setAttribute('class', 'poster_div_btn');
 		input.setAttribute('title', '영화 예매');
 		input.setAttribute('value', '예매');
+		poster_btn.appendChild(input_like);
 		poster_btn.appendChild(input);
 		poster_form.appendChild(poster_btn);
 		}
