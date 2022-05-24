@@ -25,7 +25,9 @@
 		color:#888888;
 		font-size: 12px;
 	}
-
+.login_text{
+	font-weight: 700;
+}
 </style>
 
 </head>

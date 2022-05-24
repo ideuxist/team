@@ -258,27 +258,27 @@ public class MovieDAO extends DAO {
 					
 		}
 
-		public List<Integer> SearchMovieId() {
-			conn = getConnect();
-			MovieVO vo = new MovieVO();
-			List<Integer> list = new ArrayList<Integer>();
-			String sql = "select movie_id from movie";
-			
-			try {
-				psmt = conn.prepareStatement(sql);
-				
-				rs = psmt.executeQuery();
-				while(rs.next()) {
-					list.add(rs.getInt("movie_id"));
-				}
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return list;
-		}
+//		public List<Integer> SearchMovieId() {
+//			conn = getConnect();
+//			MovieVO vo = new MovieVO();
+//			List<Integer> list = new ArrayList<Integer>();
+//			String sql = "select movie_id from movie";
+//			
+//			try {
+//				psmt = conn.prepareStatement(sql);
+//				
+//				rs = psmt.executeQuery();
+//				while(rs.next()) {
+//					list.add(rs.getInt("movie_id"));
+//				}
+//				
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//			return list;
+//		}
 
 //		public void FindScreeningId(List<Integer> list) {
 //			//screening table에 입력 전, 현재 날짜 기준 상영 일자를 위한 배열 생성

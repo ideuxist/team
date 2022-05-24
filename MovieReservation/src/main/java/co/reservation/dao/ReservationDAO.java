@@ -8,7 +8,6 @@ import co.reservation.DAO;
 import co.reservation.vo.MovieVO;
 import co.reservation.vo.ScreeningVO;
 import co.reservation.vo.SeatReservedVO;
-import co.reservation.vo.SeatVO;
 
 public class ReservationDAO extends DAO {
 

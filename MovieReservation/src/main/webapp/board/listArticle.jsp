@@ -18,9 +18,12 @@
 	text-align: center;
 	font-size: 30px;
 }
+ #QnAList{
+ 	margin:200px 0 0  190px;
+ }
 </style>
 </head>
-<table align="center" border="1" width="80%">
+<table border="1" width="80%" id = "QnAList">
 	<tr height="10" align="center" bgcolor="lightgreen">
 		<td>글번호</td>
 		<td>작성자</td>
