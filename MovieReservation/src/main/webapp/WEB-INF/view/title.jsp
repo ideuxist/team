@@ -18,6 +18,8 @@
 </style>
 </head>
 <body>
-	<a href="/MovieReservation/"><h1 id = "title">NEGABOX</h1></a>
+	<div>
+		<a href="/MovieReservation/"><h1 id = "title">NEGABOX</h1></a>
+	</div>
 </body>
 </html>

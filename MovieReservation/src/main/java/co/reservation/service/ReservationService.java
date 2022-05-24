@@ -36,6 +36,7 @@ public class ReservationService {
 	public ScreeningVO searchAuditoriumId(String screeningId) {
 		return dao.auditoriumIdSearch(screeningId);
 	} 
+	
 		
 }
 		

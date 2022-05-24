@@ -25,6 +25,7 @@
 		color:#888888;
 		font-size: 12px;
 	}
+
 </style>
 
 </head>
@@ -61,10 +62,11 @@
 	
 	<%}else if(id.equals("admin")){%>
 		<form action = "${pageContext.servletContext.contextPath}/member.view/logout.jsp" method = "post">
-			<p>${id}님, 반갑습니다!</p>
+			<p class = "login_text">${id}님, 반갑습니다!</p>
 			<input type = "submit" name = "logout" value = "로그아웃"  class="login_btn">
 			<input type = "hidden" name = "account" value = "logout"> 
 		</form>
+		
 	
 		<form action = "${pageContext.servletContext.contextPath}/autoInputDB.do" method = "post" id = "form">
 			<input type = "submit" name = "autoDB" value = "영화 DB 등록" class="login_btn">
@@ -143,7 +145,7 @@
 	
 	<%}else{ %>
 		<form action = "${pageContext.servletContext.contextPath}/member.view/logout.jsp" method = "post">
-			<p>${id}님, 반갑습니다!</p>
+			<p  class= "login_text">${id}님, 반갑습니다!</p>
 			<input type = "submit" name = "logout" value = "로그아웃" class="login_btn">
 			<input type = "hidden" name = "account" value = "logout">
 		</form> 
