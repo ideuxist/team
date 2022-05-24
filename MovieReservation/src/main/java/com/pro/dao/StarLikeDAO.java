@@ -71,14 +71,49 @@ public class StarLikeDAO extends DAO {
 			disConnect();
 		}
 	}
+	
+	public void checkLike (StarLikeVO slv) {
+		
+		conn = getConnect();
+		
+		String sql = "SELECT\n"+
+				"    like_seq\n"+
+				"FROM\n"+
+				"    info_like\n"+
+				"WHERE\n"+
+				"        movie_id = ?\n"+
+				"    AND usr_id = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, slv.getMovieId());
+			psmt.setString(2, slv.getId());
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("hello");
+			} else {
+				System.out.println("suck");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disConnect();
+		}
+		
+		
+	}
 
 	public void like(StarLikeVO slv) {
 		conn = getConnect();
 
 		String sql = "INSERT INTO info_like (\n"+
+				"    like_seq,\n"+
 				"    usr_id,\n"+
 				"    movie_id\n"+
 				") VALUES (\n"+
+				"    'ls' || info_like_seq.NEXTVAL,\n"+
 				"    ?,\n"+
 				"    ?\n"+
 				")";
