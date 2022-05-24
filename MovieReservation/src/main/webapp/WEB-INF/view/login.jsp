@@ -71,9 +71,9 @@
 			<script type="text/javascript">
 		// key, postrt_url
 		key = "90ad618fa3d2f888905f0b844cbb97df";
+
 		let loginBase_url = "https://image.tmdb.org/t/p/w500";
 		let popURL = "https://api.themoviedb.org/3/movie/popular?api_key="+key+"&language=kr-KR&page=1";
-	
 		let id = [];
 		fetch(popURL)
 			.then(response => response.json())

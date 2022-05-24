@@ -127,7 +127,15 @@ public class MovieDAO extends DAO {
 	public List<MovieVO> movieHistory(String id) {
 		conn = getConnect();
 		List<MovieVO> list = new ArrayList<MovieVO>();
-		String sql = "select * from movie_history where id = ?";
+		String sql = "select m.movie_title, s.auditorium_id, s.screening_start\r\n"
+				+ "from movie m\r\n"
+				+ "join screening s \r\n"
+				+ "on m.movie_id = s.movie_id\r\n"
+				+ "join seat_reserved r\r\n"
+				+ "on s.screening_id = r.screening_id\r\n"
+				+ "join movie_member m \r\n"
+				+ "on r.id = m.id\r\n"
+				+ "where m.id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);

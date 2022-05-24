@@ -23,7 +23,7 @@
 #historyTb {
  margin : 0 auto;
  border-collapse: collapse;
- height : 200px;
+ height : 100px;
  text-align : center;
 }
 #hisTh1 {

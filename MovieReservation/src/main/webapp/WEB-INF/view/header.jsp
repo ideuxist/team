@@ -35,6 +35,10 @@
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
 		}
+		#search_box{
+			height: 26px;
+			margin-left : 20px;
+		}
 	</style>
 </head>
 <body>
@@ -45,9 +49,8 @@
 	<%if(id == null){ %>
 	<ul class = "header">
 		<li>
-			<form action = "">
-				<input type = "search" placeholder = "영화를 검색하세요" name = "search" id = "search_box" >
-
+			<form action = "${pageContext.request.contextPath}/movieSearch/movieSearch.tiles" id = "form_search">
+				<input type = "search" placeholder = "영화를 검색하세요" name = "keyword" id = "search_box">
 			</form>
 		</li>
 		<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
@@ -65,21 +68,6 @@
 			</ul>
 	<%}%>
 
-	<script type="text/javascript">
-		let search_span = document.createElement('span');
-		let a = document.getElementById('search_a');
-		// search text 값 가져오기
-		let searchBox = document.getElementById('search_box').value;
-
-		search_span.setAttribute('class', 'material-symbols-outlined');
-		console.log(searchBox);
-		a.appendChild(search_span);
-		a.setAttribute('href', '/movieInfo.html?search='+searchBox);
-		search_span.addEventListener("click", function(){
-			a.setAttribute('href', '/movieInfo.html?search='+searchBox);
-			console.log(searchBox);
-		})
-	</script>
 	
 </body>
 </html>
