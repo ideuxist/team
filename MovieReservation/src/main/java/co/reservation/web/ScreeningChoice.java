@@ -54,9 +54,10 @@ public class ScreeningChoice extends HttpServlet {
 		
 		}else if (action.equals("round")) {
 			String date = request.getParameter("selectedDate");
+			System.out.println("선택된날짜 확인"+date);
 			String movie = request.getParameter("selectedMovie");
 			ReservationService service = new ReservationService();
-			List<ScreeningVO> screening = service.choiceRound(movie);
+			List<ScreeningVO> screening = service.choiceRound(movie,date);
 			request.setAttribute("selectedDate", date);
 			request.setAttribute("selectedMovie", movie);
 			request.setAttribute("round", screening);
@@ -93,6 +94,7 @@ public class ScreeningChoice extends HttpServlet {
 			request.setAttribute("selmovie", movie);
 			request.setAttribute("selround", startTime);
 			request.setAttribute("reserInfo",sr);
+			request.setAttribute("selseat", selectedSeat);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 			}
 		}
