@@ -10,10 +10,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<<<<<<< HEAD
-=======
 <style>
+#container{
+ width : 1000px;
+ height : 500px; 
+ margin : 0 auto;
+ border : 1px solid;
+ border-color : rgba(255,255,255,0.2);
+ padding : 30px;
+}
+#step1 {
+ float:left;
+ width:300px;
+ height:800px;
+ position:relative;
+ left : 70px;
+}
 
+#step2 {
+ float : right;
+ width: 500px;
+ height:800px;
+
+}
 .seat {
 	width: 30px;
 	height: 30px;
@@ -29,6 +48,7 @@
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.7);
  padding : 5px;
+
 }
 input, progress {
   accent-color: rgba(255,255,255,0.9);
@@ -54,10 +74,15 @@ th, td {
   border-bottom-width: 1;
   background: transparent;
   color : white;
+  text-align :left;
 }  
-   
+#reservH1 {
+ position : relative;
+ right : 250px;
+ top : 100px;
+}
+
 </style>
->>>>>>> branch 'master' of https://github.com/ideuxist/team
 </head>
 
 <body> 
@@ -67,7 +92,8 @@ th, td {
 	<br>
 	<br>
 	<br>
-
+	<div id="container">
+	<div id="step1">
 	<h3 class="reservH3">STEP1. 예매</h3>
 	<%if(id!=null) {%>
 		<!-- 상영가능일 불러오기 -->
@@ -103,7 +129,7 @@ th, td {
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			<c:forEach items="${round}" var="round">
 				<br><input type="radio" name="screeningID" value="${round.screeningID}">
-				${selectedMovie} ${round.auditoriumID }관 (${selectedDate}) 상영시간${round.screeningStart}
+				${selectedMovie} ${round.auditoriumID }관 (${selectedDate}) <br>상영시간${round.screeningStart}
 				<input type="hidden" name="movie" value="${selectedMovie}">
 				<input type="hidden" name="date" value="${selectedDate}">
 			</c:forEach>
@@ -112,21 +138,24 @@ th, td {
 			<br>
 		</form>
 		<br>
-		
-<<<<<<< HEAD
-		<!-- 좌석 선택 후 해당 좌석 예약 -->
+	</div>
+	
+	<div id="step2">
+		<h3 class="reservH3">STEP2. 예매 정보 확인</h3>
+				<br>
+				<!-- 좌석 선택 후 해당 좌석 예약 -->
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
-			상영일:<input type="text" name="date" value="${selectedDate}" readonly><br><br> 
-			상영영화:<input type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
-			상영관:<input type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
-			상영시작시간:<input type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
+			<input class="reservInput" type="text" name="date" value="${selectedDate}" readonly><br><br> 
+			<input class="reservInput" type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
+			<input class="reservInput" type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}관" readonly><br><br>
+			<input class="reservInput" type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
 			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
-			<h3 align="center">입구=========스크린=========출구</h3>
-			<table border=1>
-=======
+		
 		<!-- 	<h3 align="center">입구=========스크린=========출구</h3> -->
 			<table id="reservTb" align="center">
->>>>>>> branch 'master' of https://github.com/ideuxist/team
+			<tr>
+			<th colspan="5">입구=========스크린=========출구</th>
+			</tr>
 			<tr>
 			<c:forEach items="${seat}" var="seat">
 					  <c:choose>
@@ -140,12 +169,7 @@ th, td {
 					  </c:if>
 					  </c:when>
 					  <c:otherwise>
-<<<<<<< HEAD
-					  <td>${seat.seatId}번 (선택불가)</td>
-=======
-					  <td><input type="checkbox" name="s
-					  electedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번(x)</td>
->>>>>>> branch 'master' of https://github.com/ideuxist/team
+					  <td>${seat.seatId}번</td>
 					  <c:if test="${seat.seatId==20}">
 					  </tr>
 					  </c:if>
@@ -155,43 +179,32 @@ th, td {
 					  </c:otherwise>
 					  </c:choose>
 			</c:forEach>
+			
 			</table>
-<<<<<<< HEAD
-			<input type="submit" value="예매하기"><br><br>
-=======
 				<div></div>
 				<br>
 				<br>
-		
-	
-				<h3 class="reservH3">STEP2. 예매 정보 확인</h3>
-				<br>
-				<!-- 좌석 선택 후 해당 좌석 예약 -->
-		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
-			<input class="reservInput" type="text" name="date" value="${selectedDate}" readonly><br><br> 
-			<input class="reservInput" type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
-			<input class="reservInput" type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
-			<input class="reservInput" type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
-			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
+				
 	<div class="seat-wrapper"></div> 
 			<input class="reservBtn" type="submit" value="예매하기"><br><br>
->>>>>>> branch 'master' of https://github.com/ideuxist/team
 		  <input type="hidden" name="choice" value="doReservation">
 		</form>
 		<c:choose>
 		<c:when test="${empty seldate}">
 		</c:when>
 		<c:otherwise>
-	  <h1>${seldate} / ${selmovie} / ${selround} /${selseat }번 좌석이 예매 되었습니다 </h1>
+	  <h1>${seldate} / ${selmovie} / ${selround} 예매 되었습니다 </h1>
 	  </c:otherwise>
 	  </c:choose>	
+	  </div>
 <%} else{%>
 	  <script>
 		alert('로그인 후 이용가능합니다')
 	  </script>	
 		<jsp:forward page="/member.view/login.tiles"></jsp:forward>
 <% } %> 
-	
+
+</div>	
 </body>
 	
 	
