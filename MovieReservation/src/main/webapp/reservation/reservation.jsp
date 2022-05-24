@@ -173,7 +173,7 @@ th, td {
 			<input class="reservInput" type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
 			<input class="reservInput" type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
 			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
-	<div class="seat-wrapper"></div> 
+	    <div class="seat-wrapper"></div> 
 			<input class="reservBtn" type="submit" value="예매하기"><br><br>
 >>>>>>> branch 'master' of https://github.com/ideuxist/team
 		  <input type="hidden" name="choice" value="doReservation">
@@ -183,6 +183,9 @@ th, td {
 		</c:when>
 		<c:otherwise>
 	  <h1>${seldate} / ${selmovie} / ${selround} /${selseat }번 좌석이 예매 되었습니다 </h1>
+	  <script>
+	  alert(`${seldate} / ${selmovie} / ${selround} /${selseat }번예매되었습니다`)
+	  </script>
 	  </c:otherwise>
 	  </c:choose>	
 <%} else{%>

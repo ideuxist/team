@@ -97,7 +97,7 @@ public class ScreeningChoice extends HttpServlet {
 			request.setAttribute("selseat", selectedSeat);
 			request.getRequestDispatcher("reservation/reservation.tiles").forward(request, response);
 			}
-		}
+		} 
 		
 	}
 
