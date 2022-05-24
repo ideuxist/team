@@ -20,8 +20,8 @@ public class ReservationService {
 		return dao.movieChoice(date);
 	}
 
-	public List<ScreeningVO> choiceRound(String title) {
-		return dao.roundChoice(title);
+	public List<ScreeningVO> choiceRound(String title,String date) {
+		return dao.roundChoice(title,date);
 	}
 
 	public List<SeatReservedVO> choiceSeat(String screeningId) {
