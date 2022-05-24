@@ -9,7 +9,10 @@
 <style>
 #hisContainer {
  position : relative;
- top : -100px;
+ width : 800px;
+ height : 600px;
+ margin : 0 auto;
+ top : 100px;
 }
 
 #tbSection {
@@ -24,7 +27,7 @@
  text-align : center;
 }
 #hisTh1 {
- background-color : rgba(255,255,255,0.1);
+ background-color : rgba(255,255,255,0.3);
 }
 </style>
 </head>

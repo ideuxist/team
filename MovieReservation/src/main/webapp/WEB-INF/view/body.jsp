@@ -50,6 +50,7 @@ pageEncoding="UTF-8"%>
 	width: 200px;
 	height : 40px;
 	position: relative;
+	font-size: 15px;
 }
 .poster_div_btn_first{
 	margin-left: 20px;
@@ -63,6 +64,7 @@ pageEncoding="UTF-8"%>
 	width: 200px;
 	height : 40px;
 	position: relative;
+	font-size: 15px;
 }
 
 .poster_like_btn_first{
@@ -72,13 +74,12 @@ pageEncoding="UTF-8"%>
 	border-bottom-right-radius: 5px;
 	width: 80px;
 	height: 40px;
-	border: 3px solid #f199bc;
-  color: #6e6e6e;
+	border: 1px solid #fff;
+  color: #fff;
+	background-color: black;
+	font-size: 15px;
 }
-.poster_like_btn_first :hover{
-	background-color: #f199bc;
-  color: #d4dfe6;
-}
+
 
 
 .poster_like_btn{
@@ -89,6 +90,10 @@ pageEncoding="UTF-8"%>
 	width: 80px;
 	height: 40px;
 	margin-left: 20px;
+	border: 1px solid #fff;
+  color: #fff;
+	background-color: black;
+	font-size: 15px;
 }
 
 
@@ -178,7 +183,7 @@ fetch(popularityURL)
 		input_like.setAttribute('type','button');
 		input_like.setAttribute('class','poster_like_btn_first');
 		input_like.setAttribute('title','좋아요 버튼');
-		input_like.setAttribute('value','좋아요');
+		input_like.setAttribute('value','Like');
 		input.setAttribute('type', 'submit');
 		input.setAttribute('class', 'poster_div_btn_first');
 		input.setAttribute('title', '영화 예매');
@@ -190,7 +195,7 @@ fetch(popularityURL)
 		input_like.setAttribute('type','button');
 		input_like.setAttribute('class','poster_like_btn');
 		input_like.setAttribute('title','좋아요 버튼');
-		input_like.setAttribute('value','좋아요');
+		input_like.setAttribute('value','Like');
 		input.setAttribute('type', 'submit');
 		input.setAttribute('class', 'poster_div_btn');
 		input.setAttribute('title', '영화 예매');

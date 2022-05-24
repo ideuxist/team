@@ -8,8 +8,10 @@
 <style>
 #loginFrm {
  position : relative;
- top : 200px;
- bottom : 200px;
+ width : 600px;
+ height : 500px;
+ margin : 0 auto;
+ top : 100px;
 }
 .loginH3 {
  text-align : center;
@@ -28,7 +30,8 @@
  position : relative;
  top : 20px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
+ padding : 2px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
 }
@@ -36,22 +39,26 @@
  text-align : center;
  color : rgba(255,255,255,0.6);
  border : solid 1.5px;
- border-radius : 10px;
+ border-radius : 5px;
  padding : 1.5px;
  font-size : 12px;
+}
+#loginA2 {
+ color : rgba(255,255,255,0.6);
+ font-weight : bolder;
 }
 </style>
 <script type="text/javascript">
 function openFindId() {
 	window.name = "parentFrom";
-	window.open("member.view/findIdForm.jsp",
+	window.open("findIdForm.jsp",
 	"findIdForm", "width=500, height=300, resizable = yes, scrollbars = no");
 	
 }
 
 function openFindPw() {
 	window.name = "parentFrom";
-	window.open("member.view/findPwForm.jsp",
+	window.open("findPwForm.jsp",
 	"findPwForm", "width=500, height=300, resizable = yes, scrollbars = no");
 	
 }
@@ -72,6 +79,13 @@ function openFindPw() {
   <a class="loginA" href='javascript:void(0);' onclick="openFindId();">아이디 찾기</a>
   <a class="loginA" href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
   </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  NEGABOX가 처음이신가요? <a id="loginA2" href="join.tiles">회원가입</a>
  </div>
 </body>
 </html>

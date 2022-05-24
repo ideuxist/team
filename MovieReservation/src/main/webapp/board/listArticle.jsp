@@ -55,11 +55,11 @@
 							</c:forEach>
 							<span style="font-size: 12px;">[답변]</span>
 							<a class='cls1'
-								href="${contextPath}viewArticle.do?articleNO=${article.articleNO}">${article.title}</a>
+								href="${contextPath}/viewArticle.boa?articleNO=${article.articleNO}">${article.title}</a>
 						</c:when>
 						<c:otherwise>
 							<a class='cls1'
-								href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">${article.title }</a>
+								href="${contextPath}/board/viewArticle.boa?articleNO=${article.articleNO}">${article.title }</a>
 						</c:otherwise>
 					</c:choose>
 					</td>
@@ -69,7 +69,7 @@
 	</c:when>
 </c:choose>
 </table>
-<a  class="cls1"  href="#"><p class="cls2">글쓰기</p></a>
+<a  class="cls1"  href="${contextPath}/board/addArticle.boa"><p class="cls2">글쓰기</p></a>
 
 	<body>
 

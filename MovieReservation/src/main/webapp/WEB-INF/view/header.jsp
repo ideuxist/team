@@ -5,21 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		
 		
 		<style>
-		.material-symbols-outlined {
-			font-variation-settings:
-			Fill: 0,
-			Weight: 300G,
-			rade: 200,
-			Optical size: 24
-		}
-		.material-symbols-outline{
-			
-		}
-		
-
 		.header{
 		    background-color: black;
 			height : 50px;
@@ -58,13 +46,14 @@
 	<ul class = "header">
 		<li>
 			<form action = "">
-				<input type = "text" placeholder = "영화를 검색하세요" name = "search" id = "search_box" >
-				<input type = "submit" class = "material-symbols-outlined">
+				<input type = "search" placeholder = "영화를 검색하세요" name = "search" id = "search_box" >
+
 			</form>
 		</li>
 		<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
 		<li><a href ="">상영관</a></li>
-		<li><a href ="${pageContext.request.contextPath }/BoardController">게시판</a></li>
+		<li><a href ="${pageContext.servletContext.contextPath}/member.view/mypage.tiles" id = "mypage">마이페이지</a></li>
+		<li><a href ="${pageContext.request.contextPath }/boardController.boa">게시판</a></li>
 	</ul>
 	<%}else if(id !=null){ %>
 			<ul  class = "header">
@@ -72,7 +61,7 @@
 				<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
 				<li><a href ="">상영관</a></li>
 				<li><a href ="${pageContext.servletContext.contextPath}/member.view/mypage.tiles" id = "mypage">마이페이지</a></li>
-				<li><a href ="${pageContext.request.contextPath }/BoardController">게시판</a></li>
+				<li><a href ="${pageContext.request.contextPath }/boardController.boa">게시판</a></li>
 			</ul>
 	<%}%>
 

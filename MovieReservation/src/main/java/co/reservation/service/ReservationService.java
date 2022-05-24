@@ -28,8 +28,9 @@ public class ReservationService {
 		return dao.seatChoice(screeningId);
 	}
 
-	public SeatReservedVO reservation(String scrId,String selectedSeat) {
-		return dao.completReservation(scrId,selectedSeat);
+	public SeatReservedVO reservation(String scrId,String selectedSeat,String memberId) {
+		System.out.println("멤버아이디는 "+memberId);
+		return dao.completReservation(scrId,selectedSeat,memberId);
 	}
 
 	public ScreeningVO searchAuditoriumId(String screeningId) {

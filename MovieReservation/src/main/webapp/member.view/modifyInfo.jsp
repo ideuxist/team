@@ -8,7 +8,10 @@
 <style>
 #modifyFrm {
  position : relative;
- top : -100px;
+ width : 800px;
+ height : 600px;
+ margin : 0 auto;
+ top : 100px;
 }
 #modifyH3 {
  text-align : center;
@@ -27,17 +30,19 @@
  position : relative;
  bottom : -20px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
 #modDelBtn {
  position : relative;
  bottom : -20px;
  border : none;
- border-radius : 10px;
+ border-radius : 5px;
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.4);
+ padding : 2px;
 }
 
 </style>
@@ -60,6 +65,6 @@ function delConfirm() {
   <input type="hidden" name="id" value=${member.id }><br>
   <input id="modDelBtn" type="submit" value="회원탈퇴"><br>  
   </form> 
- </body>
  </div>
+ </body>
 </html>
