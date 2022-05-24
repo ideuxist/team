@@ -10,6 +10,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<<<<<<< HEAD
+=======
 <style>
 
 .seat {
@@ -55,6 +57,7 @@ th, td {
 }  
    
 </style>
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
 </head>
 
 <body> 
@@ -110,8 +113,20 @@ th, td {
 		</form>
 		<br>
 		
+<<<<<<< HEAD
+		<!-- 좌석 선택 후 해당 좌석 예약 -->
+		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
+			상영일:<input type="text" name="date" value="${selectedDate}" readonly><br><br> 
+			상영영화:<input type="text" name="movie" value="${selectedMovie}" readonly><br><br> 
+			상영관:<input type ="text" name="auditoriumID" value="${selectedAuditoriumId.auditoriumID}" readonly>관<br><br>
+			상영시작시간:<input type="text" name="round" value="${selectedAuditoriumId.screeningStart}"readonly><br><br> 
+			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
+			<h3 align="center">입구=========스크린=========출구</h3>
+			<table border=1>
+=======
 		<!-- 	<h3 align="center">입구=========스크린=========출구</h3> -->
 			<table id="reservTb" align="center">
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
 			<tr>
 			<c:forEach items="${seat}" var="seat">
 					  <c:choose>
@@ -125,8 +140,12 @@ th, td {
 					  </c:if>
 					  </c:when>
 					  <c:otherwise>
+<<<<<<< HEAD
+					  <td>${seat.seatId}번 (선택불가)</td>
+=======
 					  <td><input type="checkbox" name="s
 					  electedSeat" value="${seat.seatId}" checked onClick="return false;">${seat.seatId}번(x)</td>
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
 					  <c:if test="${seat.seatId==20}">
 					  </tr>
 					  </c:if>
@@ -136,8 +155,10 @@ th, td {
 					  </c:otherwise>
 					  </c:choose>
 			</c:forEach>
-			
 			</table>
+<<<<<<< HEAD
+			<input type="submit" value="예매하기"><br><br>
+=======
 				<div></div>
 				<br>
 				<br>
@@ -154,13 +175,14 @@ th, td {
 			<input type ="hidden" name = "selectedScreeningId" value="${selectedScreeningId}">
 	<div class="seat-wrapper"></div> 
 			<input class="reservBtn" type="submit" value="예매하기"><br><br>
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
 		  <input type="hidden" name="choice" value="doReservation">
 		</form>
 		<c:choose>
 		<c:when test="${empty seldate}">
 		</c:when>
 		<c:otherwise>
-	  <h1>${seldate} / ${selmovie} / ${selround} 예매 되었습니다 </h1>
+	  <h1>${seldate} / ${selmovie} / ${selround} /${selseat }번 좌석이 예매 되었습니다 </h1>
 	  </c:otherwise>
 	  </c:choose>	
 <%} else{%>
