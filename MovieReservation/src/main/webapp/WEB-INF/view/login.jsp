@@ -60,7 +60,7 @@
 		key = "90ad618fa3d2f888905f0b844cbb97df";
 		let posterBase_url = "https://image.tmdb.org/t/p/w500";
 		let popularityURL = "https://api.themoviedb.org/3/movie/popular?api_key="+key+"&language=kr-KR&page=1";
-	
+
 		let id = [];
 		fetch(popularityURL)
 			.then(response => response.json())
