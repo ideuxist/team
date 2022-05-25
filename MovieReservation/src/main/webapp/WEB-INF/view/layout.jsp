@@ -12,6 +12,7 @@
 				background:  black;
 				z-index: 0;
 				text-align: center;
+				font-family: 'Noto Sans KR', sans-serif;
     	}
 
 		a{
@@ -21,6 +22,7 @@
 			margin: 0;
 			padding: 0;
 		}
+
     </style>
   </head>
   <body>

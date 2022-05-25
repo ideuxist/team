@@ -5,13 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import co.reservation.DAO;
 import co.reservation.vo.ArticleVO;
 
 public class BoardDAO extends DAO{
-	private DataSource dataFactory;
+
 	
 	public List<ArticleVO> selectAllArticles() {
 	List<ArticleVO> articleList = new ArrayList();

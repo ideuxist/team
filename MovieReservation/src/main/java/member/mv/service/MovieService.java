@@ -39,6 +39,15 @@ public class MovieService {
 		dao.autoInputDB(vo);
 		
 	}
-	
-	
+
+//	public List<Integer> SearchMovieId() {
+//		return dao.SearchMovieId();
+//	}
+
+
+
+//	public void FindScreeningId(List<Integer> list) {
+//		dao.FindScreeningId(list);
+//	}
+//	
 }

@@ -12,6 +12,22 @@
 		background-color: black;
 		text-align: right;
 	}
+
+	.login_btn{
+		border: 0;
+		outline: 0;
+		color:#888888;
+		background-color: black;
+		font-size: 12px;
+	}
+
+	.find_btn{
+		color:#888888;
+		font-size: 12px;
+	}
+.login_text{
+	font-weight: 700;
+}
 </style>
 
 </head>
@@ -38,31 +54,32 @@
 	
 	<%if(id == null){%>
 	<form action ="${pageContext.servletContext.contextPath}/member.view/login.tiles" method = "post">
-	<input type ="submit" value ="로그인" >
-	<a href='javascript:void(0);' onclick="openFindId();">아이디 찾기</a>
-  	<a href='javascript:void(0);' onclick="openFindPw();">비밀번호 찾기</a>
+	<input type ="submit" value ="로그인" class="login_btn">
+	<a href='javascript:void(0);' onclick="openFindId();" class = "find_btn">아이디 찾기</a>
+  	<a href='javascript:void(0);' onclick="openFindPw();" class = "find_btn">비밀번호 찾기</a>
 	</form>
 	<form action = "${pageContext.servletContext.contextPath}/member.view/join.tiles" method = "post">
-		<input type = "submit" value = "회원가입">
+		<input type = "submit" value = "회원가입"  class="login_btn">
 	</form>
 	
 	<%}else if(id.equals("admin")){%>
 		<form action = "${pageContext.servletContext.contextPath}/member.view/logout.jsp" method = "post">
-			<p>${id}님, 반갑습니다!</p>
-			<input type = "submit" name = "logout" value = "로그아웃">
+			<p class = "login_text">${id}님, 반갑습니다!</p>
+			<input type = "submit" name = "logout" value = "로그아웃"  class="login_btn">
 			<input type = "hidden" name = "account" value = "logout"> 
 		</form>
+		
 	
 		<form action = "${pageContext.servletContext.contextPath}/autoInputDB.do" method = "post" id = "form">
-			<input type = "submit" name = "autoDB" value = "영화 DB 등록">
+			<input type = "submit" name = "autoDB" value = "영화 DB 등록" class="login_btn">
 			<script type="text/javascript">
 		// key, postrt_url
 		key = "90ad618fa3d2f888905f0b844cbb97df";
-		let posterBase_url = "https://image.tmdb.org/t/p/w500";
-		let popularityURL = "https://api.themoviedb.org/3/movie/popular?api_key="+key+"&language=kr-KR&page=1";
 
+		let loginBase_url = "https://image.tmdb.org/t/p/w500";
+		let popURL = "https://api.themoviedb.org/3/movie/popular?api_key="+key+"&language=kr-KR&page=1";
 		let id = [];
-		fetch(popularityURL)
+		fetch(popURL)
 			.then(response => response.json())
 			.then((res) => {
 				console.log(res);
@@ -81,7 +98,7 @@
 				// 메인 화면 포스터 생성
 				for(let i = 0; i < 4; i++){
 					// poster 주소값
-					let poster = posterBase_url + res.results[i].poster_path;
+					let poster = loginBase_url + res.results[i].poster_path;
 					let movie_id = res.results[i].id;
 					let movie_title = res.results[i].original_title;
 		
@@ -130,8 +147,8 @@
 	
 	<%}else{ %>
 		<form action = "${pageContext.servletContext.contextPath}/member.view/logout.jsp" method = "post">
-			<p>${id}님, 반갑습니다!</p>
-			<input type = "submit" name = "logout" value = "로그아웃">
+			<p  class= "login_text">${id}님, 반갑습니다!</p>
+			<input type = "submit" name = "logout" value = "로그아웃" class="login_btn">
 			<input type = "hidden" name = "account" value = "logout">
 		</form> 
 	<%} %>
