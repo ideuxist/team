@@ -60,7 +60,11 @@
 	</ul>
 	<%}else if(id !=null){ %>
 			<ul  class = "header">
-				<li><a href ="">영화검색</a></li>
+				<li>
+					<form action = "${pageContext.request.contextPath}/movieSearch/movieSearch.tiles" id = "form_search">
+						<input type = "search" placeholder = "영화를 검색하세요" name = "keyword" id = "search_box">
+					</form>
+				</li>
 				<li><a href ="${pageContext.request.contextPath}/reservation/reservation.tiles">예매하기</a></li>
 
 				<li><a href ="${pageContext.servletContext.contextPath}/member.view/mypage.tiles" id = "mypage">마이페이지</a></li>
