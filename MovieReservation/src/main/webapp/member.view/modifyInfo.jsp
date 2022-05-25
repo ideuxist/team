@@ -51,11 +51,16 @@ function delConfirm() {
 	alert("정말 탈퇴하시겠습니까?")
 }
 </script>
+<script type="text/javascript">
+function modConfirm() {
+	alert("수정이 완료되었습니다")
+}
+</script>
 </head>
 <body>
   <div id="modifyFrm">
   <h3 id="modifyH3">수정할 정보를 재입력하세요</h3>
-  <form action="${pageContext.servletContext.contextPath }/memberUpdate.do" method="post" >
+  <form action="${pageContext.servletContext.contextPath }/memberUpdate.do" method="post" onsubmit="return modConfirm()">
   <input class="modifyInput" type="password" name="passwd"value=${member.passwd }><br>
   <input class="modifyInput" type="email" name="email" value=${member.email }><br>
   <input type="hidden" name="id" value=${member.id }><br>
