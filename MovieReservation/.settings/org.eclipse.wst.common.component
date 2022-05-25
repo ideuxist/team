@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                 
     
+=======
+                    
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
     
     
     
@@ -23,7 +27,7 @@
         
         
         
-        
+
         
         
         
@@ -37,12 +41,17 @@
         
         
         
+<<<<<<< HEAD
         
         
         
         <property name="context-root" value="MovieReservation"/>
                             
     
+=======
+      <property name="context-root" value="MovieReservation"/>
+
+>>>>>>> branch 'master' of https://github.com/ideuxist/team
     
     
     
@@ -51,9 +60,10 @@
     
     
     
-    
+
     </wb-module>
             
 
 
+    
 </project-modules>
