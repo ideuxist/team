@@ -112,7 +112,7 @@ th, td {
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			<c:forEach items="${movieList}" var="movie">
 			<script>console.log(movie.audi)</script>
-				<input type="radio" name="selectedMovie" value="${movie.movieTitle}"> ${movie.movieTitle}  (${selectedDate})<br>
+				<input type="radio" name="selectedMovie" value="${movie.movieTitle}"> ${movie.movieTitle}<br>
 				<input type="hidden" name="selectedDate" value="${selectedDate}">
 				
 			</c:forEach>
@@ -124,7 +124,7 @@ th, td {
 		<form action="${pageContext.servletContext.contextPath}/screeningChoice" method="post">
 			<c:forEach items="${round}" var="round">
 				<br><input type="radio" name="screeningID" value="${round.screeningID}">
-				${selectedMovie} ${round.auditoriumID }관 (${selectedDate}) <br>상영시간${round.screeningStart}
+				${round.auditoriumID }관 (${round.screeningStart})
 				<input type="hidden" name="movie" value="${selectedMovie}">
 				<input type="hidden" name="date" value="${selectedDate}">
 			</c:forEach>
@@ -194,9 +194,9 @@ th, td {
 		<c:when test="${empty seldate}">
 		</c:when>
 		<c:otherwise>
-	  <script>
-	  alert(`${seldate} / ${selmovie} / ${selround} 예매 되었습니다 `)
-	  </script> 
+	     <script>
+	      alert("예매되었습니다")
+	     </script>
 	  </c:otherwise>
 	  </c:choose>	
 	  </div>

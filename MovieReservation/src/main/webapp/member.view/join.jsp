@@ -70,7 +70,6 @@ fieldset {
 		  alert("비밀번호를 동일하게 입력하세요");
 		  return false;
 	  }
-
   }
   
   function openIdChk(){

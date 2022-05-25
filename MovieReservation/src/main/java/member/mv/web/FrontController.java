@@ -26,7 +26,7 @@ public class FrontController extends HttpServlet{
 		list.put("/autoInputDB.do", new autoInputDBControl());
 		
 		list.put("/memberDelete.do", new MemberDeleteControl());
-//		list.put("/ReservationAutoController.do", new ReservationAutoControll());
+		list.put("/ReservationAutoControll.do", new ReservationAutoControll());
 
 	}
 	

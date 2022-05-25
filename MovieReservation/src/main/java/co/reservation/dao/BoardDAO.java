@@ -79,8 +79,8 @@ public class BoardDAO extends DAO{
 			String content = article.getContent();
 			String id = article.getId();
 			String imageFileName = article.getImageFileName();
-			String sql = "insert into free_board (articleno,parentno,title,content,imagefilename,id)"
-					+ "values(?,?,?,?,?,?)";
+			String sql = "insert into free_board (articleno,parentno,title,content,imagefilename,writedate,id)"
+					+ "values(?,?,?,?,?,sysdate,?)";
 			psmt=conn.prepareStatement(sql);
 			psmt.setInt(1,articleNO);
 			psmt.setInt(2, parentNO);
