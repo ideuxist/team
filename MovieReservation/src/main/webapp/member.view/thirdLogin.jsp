@@ -43,6 +43,7 @@
   <input class="reloginInput" type="password" name="passwd" placeholder="비밀번호" autocomplete="off"><br>
   <input type="hidden" name="job" value="update">
   <input id ="reloginBtn" type="submit" value="로그인"><br>
+  
   </form>
 </div>
 </body>

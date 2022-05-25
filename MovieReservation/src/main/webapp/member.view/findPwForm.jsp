@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,11 +50,16 @@ form {
  color : rgba(255,255,255,0.4);
  padding : 2px;
 }
-
 </style>
 </head>
 <body>
 <div id="container">
+<c:if test="${!empty result}">
+ <script>
+  alert("전송완료")
+ </script>
+ <% session.removeAttribute("result"); %>
+</c:if>
 <h4 id="findPwFrmH4">입력 후 잠시만 기다려주세요. 비밀번호는 메일로 전송됩니다.</h4>
 <h5 id="findPwFrmH5">${error }</h5>
 <form action="${pageContext.servletContext.contextPath }/memberFindPw.do" method="post">
@@ -61,6 +67,8 @@ form {
 <input class="findPwInput" type="email" name="email" placeholder="이메일" autocomplete="off" required><br>
 <input id ="subBtn" type="submit" value="메일전송">
 </form>
+
 </div>
 </body>
+
 </html>
