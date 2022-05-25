@@ -34,8 +34,8 @@ public class MemberInsertControl implements Control {
 		MovieService service = new MovieService();
 		service.memberInsert(vo);
 		
-		
-		request.getRequestDispatcher("member.result/joinOutput.tiles").forward(request, response);
+		request.getSession().setAttribute("join", "가입");
+		response.sendRedirect("/MovieReservation/member.view/login.tiles");
 
 		
 	}
