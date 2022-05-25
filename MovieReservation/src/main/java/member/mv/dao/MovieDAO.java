@@ -129,7 +129,7 @@ public class MovieDAO extends DAO {
 	public List<MovieVO> movieHistory(String id) {
 		conn = getConnect();
 		List<MovieVO> list = new ArrayList<MovieVO>();
-		String sql = "select m.movie_title, s.auditorium_id, s.screening_start\r\n"
+		String sql = "select m.movie_title, s.auditorium_id, to_char(s.screening_start, 'YY/MM/DD HH24:MI') as screening_start\r\n"
 				+ "from movie m\r\n"
 				+ "join screening s \r\n"
 				+ "on m.movie_id = s.movie_id\r\n"
