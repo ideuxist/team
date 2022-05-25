@@ -29,34 +29,60 @@
 </script>
  <title>새글 쓰기 창</title>
  <style>
- 	#articleForm_h1{
- 		margin-top:40px;
+ 	#articleForm_h2{
+ 		margin-top:70px;
+ 		text-decoration: underline;
+ 		text-align : center;
 
  	}
  	#articleForm{
- 		margin: 80px 0 0 610px; 
+ 		margin: 30px 0 0 610px; 
  	}
  	#articleForm_textarea{
  		width : 502px;
+ 		height : 270px;
+ 		margin-bottom : 5px;
+ 		background-color : #aaa;
  	}
  	#preview{
  	
  	}
  	#articleForm_fileUploadBtn{
- 		margin-left:44px;
+ 		 margin-left:44px;
+
  	}
 	.articleForm_finalbtn{
-		margin: 15px 0 0 170px;
+		 margin: 15px 0 0 170px;
+		 position : relative;
+		 top : 20px;
+		 border : none;
+		 border-radius : 5px;
+		 padding : 2px;
+		 background-color : rgba(255,255,255,0.2);
+		 color : rgba(255,255,255,0.4);
+	}
+	#articleForm_titleBox{
+		background-color : #aaa;
+		margin:4px 0;
+	}
+	.articleForm_backList{
+		 position : relative;
+		 top : 20px;
+		 border : none;
+		 border-radius : 5px;
+		 padding : 2px;
+		 background-color : rgba(255,255,255,0.2);
+		 color : rgba(255,255,255,0.4);
 	}
  </style>
 </head>
 <body>
-<h1 style="text-align:center" id = "articleForm_h1">새 글 작성</h1>
+<h2 style="text-align:center" id = "articleForm_h2">새 글 작성</h2>
   <form name="articleForm" method="post"  action="${contextPath}/board/addArticlesubmit.boa"   enctype="multipart/form-data" id = "articleForm">
     <table id = "articlefrom_table" >
      <tr>
 	   <td align="right">글제목: </td>
-	   <td colspan="2"><input type="text" size="67"  maxlength="500" name="title" /></td>
+	   <td colspan="2"><input type="text" size="67"  maxlength="500" name="title" id = "articleForm_titleBox"/></td>
 	 </tr>
 	 <tr>
 		<td align="right" valign="top"><br>글내용: </td>
@@ -71,7 +97,7 @@
 	    <td align="right"> </td>
 	    <td colspan="2">
 	       <input type="submit" value="글쓰기" class = "articleForm_finalbtn" />
-	       <input type=button value="목록보기" onClick="backToList(this.form)" />
+	       <input type=button value="목록보기" onClick="backToList(this.form)" class = "articleForm_backList" />
 	    </td>
      </tr>
     </table>

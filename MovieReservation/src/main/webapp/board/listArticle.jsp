@@ -21,7 +21,7 @@ request.setCharacterEncoding("utf-8");
 	text-align: right;
 	font-size: 20px;
 	color: #999;
-	margin: 10px 190px 0 0;
+	margin: 10px 200px 0 0;
 
 }
 
