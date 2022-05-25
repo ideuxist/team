@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
     .footer{
-        
+        margin-top : 300px;
     }
 </style>
 </head>
