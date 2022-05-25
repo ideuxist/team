@@ -1,3 +1,4 @@
+<%@page import="co.reservation.vo.ArticleVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
@@ -15,6 +16,13 @@
 	    obj.action="${contextPath}/boardController.boa";
 	    obj.submit();
 	  }
+      function fn_enable(obj){
+  	    const btn = document.getElementsByClassName('viewArticle_textBox')[0];				
+  	  }
+      function backToList(obj){
+  	    obj.action="${contextPath}/boardController.boa";
+  	    obj.submit();
+  	  }
    </script>
    <style>
    		#viewArticle_table{
@@ -26,12 +34,14 @@
    			font-size : 14px;	
    			color : white;
    			padding : 2px;
+   			background-color : #aaa;
    		}
    		#i_content{
    			color: white;
    			background-color : #aaa;
    			font-size : 12px;
    			width : 439px;
+   			font-family: 'Noto Sans KR', sans-serif;
    		}
    		#i_imageFileName{
    			color : white;
@@ -62,6 +72,12 @@
    </style>
 </head>
 <body>
+	<%
+		 // 현재 로그인한 Id와 게시글의 id를 비교하여 같은 사용자일 경우 수정 버튼 생성
+	    String loginId = (String)session.getAttribute("id");
+	    String articleId = (String)request.getAttribute("articleId");
+	%>
+
 
   <form name="frmArticle" method="post"  enctype="multipart/form-data">
   <table id = "viewArticle_table">
@@ -87,16 +103,28 @@
       제목 
    </td>
    <td>
-    <input type="text" value="${article.title }"  name="title"  id="i_title" disabled class = "viewArticle_textBox">
+   	<%if(loginId.equals(articleId)){%>
+    <input type="text" value="${article.title }"  name="title"  id="i_title"  class = "viewArticle_textBox">
+    <%}else{ %>
+   	 <input type="text" value="${article.title }"  name="title"  id="i_title" disabled class = "viewArticle_textBox">
+    <%} %>
    </td>   
   </tr>
   <tr>
    <td width="150" align="center" bgcolor="#888">
       내용
    </td>
-   <td>
-    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled>${article.content }</textarea>
-   </td>  
+	   <%if(loginId.equals(articleId)){%>
+	    <td>
+   		    <textarea rows="20" cols="60"  name="content"  id="i_content"  >${article.content }</textarea>
+ 	    </td>
+	    <%}else{ %>
+	   	 <td>
+  		    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled>${article.content }</textarea>
+   		 </td>
+	    <%} %>
+   
+     
   </tr>
  
 <c:if test="${not empty article.imageFileName && article.imageFileName!='null' }">  
@@ -137,8 +165,12 @@
 	    <input type=button value="수정하기" onClick="fn_enable(this.form)">
 	    <input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.articleNO})">
 	  </c:if> --%>
-	  <input type=button value="수정"  class = "viewArticle_btn" onClick="fn_enable(this.form)" >
-	  <input type=button value="삭제" class = "viewArticle_btn" onClick="fn_remove_article('${contextPath}/board/removeArticle.boa', ${article.articleNO})">
+	  <%if(loginId.equals(articleId)){
+	  	%> 
+	  		  <input type=button value="수정"  class = "viewArticle_btn" onClick="fn_enable(this.form)" >
+	  		  <input type=button value="삭제" class = "viewArticle_btn" onClick="fn_remove_article('${contextPath}/board/removeArticle.boa', ${article.articleNO})">
+	  	<%}%>  
+	  
 	  <input type=button value="리스트로 돌아가기" class = "viewArticle_btn" onClick="backToList(this.form)">
 	  <input type=button value="답글" class = "viewArticle_btn_last" onClick="fn_reply_form('${contextPath}/board/replyForm.boa', ${article.articleNO})">
    </td>

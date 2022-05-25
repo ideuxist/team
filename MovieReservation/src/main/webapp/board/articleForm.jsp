@@ -36,13 +36,16 @@
 
  	}
  	#articleForm{
- 		margin: 30px 0 0 610px; 
+ 		margin: 30px 0 0 590px; 
+ 		
  	}
  	#articleForm_textarea{
- 		width : 502px;
+ 		width : 518px;
  		height : 270px;
  		margin-bottom : 5px;
  		background-color : #aaa;
+ 		color : white;
+ 		font-family: 'Noto Sans KR', sans-serif;
  	}
  	#preview{
  	
@@ -64,6 +67,8 @@
 	#articleForm_titleBox{
 		background-color : #aaa;
 		margin:4px 0;
+		font-family: 'Noto Sans KR', sans-serif;
+		color : white;
 	}
 	.articleForm_backList{
 		 position : relative;
@@ -72,7 +77,7 @@
 		 border-radius : 5px;
 		 padding : 2px;
 		 background-color : rgba(255,255,255,0.2);
-		 color : rgba(255,255,255,0.4);
+		 color : rgba(255,255,255,0.4);	
 	}
  </style>
 </head>
@@ -81,7 +86,7 @@
   <form name="articleForm" method="post"  action="${contextPath}/board/addArticlesubmit.boa"   enctype="multipart/form-data" id = "articleForm">
     <table id = "articlefrom_table" >
      <tr>
-	   <td align="right">글제목: </td>
+	   <td align="right" >글제목: </td>
 	   <td colspan="2"><input type="text" size="67"  maxlength="500" name="title" id = "articleForm_titleBox"/></td>
 	 </tr>
 	 <tr>

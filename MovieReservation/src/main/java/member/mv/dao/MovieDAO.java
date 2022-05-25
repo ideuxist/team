@@ -1,6 +1,8 @@
 package member.mv.dao;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -258,74 +260,47 @@ public class MovieDAO extends DAO {
 					
 		}
 
-//		public List<Integer> SearchMovieId() {
-//			conn = getConnect();
-//			MovieVO vo = new MovieVO();
-//			List<Integer> list = new ArrayList<Integer>();
-//			String sql = "select movie_id from movie";
-//			
-//			try {
-//				psmt = conn.prepareStatement(sql);
-//				
-//				rs = psmt.executeQuery();
-//				while(rs.next()) {
-//					list.add(rs.getInt("movie_id"));
-//				}
-//				
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//			return list;
-//		}
+		public List<Integer> SearchMovieId() {
+			conn = getConnect();
+			MovieVO vo = new MovieVO();
+			List<Integer> list = new ArrayList<Integer>();
+			String sql = "select movie_id from movie";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+					list.add(rs.getInt("movie_id"));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
 
-//		public void FindScreeningId(List<Integer> list) {
-//			//screening table에 입력 전, 현재 날짜 기준 상영 일자를 위한 배열 생성
-//			List<String> date = new ArrayList<String>();
-//			List<String> time = new ArrayList<String>();
-//			// 현재 날짜 기준 5,6,7일 후 상영일자
-//			LocalDate now = LocalDate.now();
-//			LocalDate fifthDay = now.plusDays(5);
-//			LocalDate sixthDay = now.plusDays(6);
-//			LocalDate seventhDay = now.plusDays(7);
-//			// date -> String
-//			String StringFifthDay = fifthDay.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//			String StringSixthDay = sixthDay.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//			String StringSeventhDay = seventhDay.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//			date.add(StringFifthDay);
-//			date.add(StringSixthDay);
-//			date.add(StringSeventhDay);
-//			time.add("10:00");
-//			time.add("16:00");
-//			time.add("20:00");
-//			
-//			// 일단 screening_id 값을 받기 위한 list
-//			List<Integer> vo = new ArrayList<Integer>();
-//			conn = getConnect();
-//			
-//			String sql = "insert into screening (screening_id, movie_id, auditorium_id, screening_start) values ((SELECT NVL(MAX(screening_id)+1,0) FROM screening),  ? , ?, ?)";			
-//			try {
-//				psmt = conn.prepareStatement(sql);
-//				for(int i =0; i<list.size(); i++) {
-//					psmt.setInt(1, list.get(i));
-//					for(int m = 0; m < 1; m++) {
-//						psmt.setInt(2, m+1);
-//						for(int n = 0; n<3; n++) {
-//							String dateType = date.get(m) + time.get(n);
-//							System.out.println(dateType);
-//							psmt.setString(3, dateType);
-//							
-//							int r = psmt.executeUpdate();
-//						}	
-//					}
-//				}
-//			} catch (SQLException e) {
-//
-//				e.printStackTrace();
-//			}
-//		
-//		}
+		public void FindScreeningId(int movieIdNum, String reserv, int screenLocation) {
+
+			conn = getConnect();
+			
+			String sql = "insert into screening (screening_id, movie_id, auditorium_id, screening_start) values ((SELECT MAX(screening_id)+1 FROM screening), ?, ?, to_date(?, 'yyyy-mm-dd hh24:mi'))";			
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, movieIdNum);
+				psmt.setInt(2, screenLocation);
+				psmt.setString(3, reserv);
+				
+				int r = psmt.executeUpdate();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		
+		}
 
 
 }
