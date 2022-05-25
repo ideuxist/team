@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +67,25 @@ function openFindPw() {
 </head>
 <body>
  <div id="loginFrm">
+ 
+ <c:if test="${!empty success }">
+  <script>
+   alert("탈퇴가 완료되었습니다")
+  </script>
+   <% 
+      session.removeAttribute("success"); 
+   %>
+ </c:if>
+ 
+ <c:if test="${!empty join }">
+  <script>
+   alert("가입이 완료되었습니다")
+  </script>
+   <%  
+       session.removeAttribute("join");
+   %>
+ </c:if>
+ 
   <h3 class="loginH3">${error }</h3>
   <h3 class="loginH3">${result }</h3>
   

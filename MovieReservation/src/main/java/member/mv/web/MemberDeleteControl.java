@@ -18,8 +18,9 @@ public class MemberDeleteControl implements Control {
 		MovieService service= new MovieService();
 		service.memberDelete(id);
 		
-		request.setAttribute("id", id);
-		request.getRequestDispatcher("/member.result/deleteOutput.tiles").forward(request, response);
+		request.getSession().invalidate();
+		request.getSession().setAttribute("success", "탈퇴가 완료되었습니다");
+		response.sendRedirect("/MovieReservation/member.view/login.tiles");
 	}
 
 }
