@@ -1,13 +1,10 @@
 package com.pro.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
 
 import com.pro.service.InfoService;
 import com.pro.vo.StarLikeVO;
@@ -28,13 +25,16 @@ public class LikesGetControl implements Control {
 
 		service.getLikes(slv);
 
-		PrintWriter out = response.getWriter();
+		request.setAttribute("likes", slv.getLikes());
+		request.getRequestDispatcher("movieInfo/movieInfo.jsp").forward(request, response);
 
-		JSONObject jo = new JSONObject();
-		jo.put("likes", slv.getLikes());
-
-		out.print(jo);
-		out.close();
+//		PrintWriter out = response.getWriter();
+//
+//		JSONObject jo = new JSONObject();
+//		jo.put("likes", slv.getLikes());
+//
+//		out.print(jo);
+//		out.close();
 
 	}
 

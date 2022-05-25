@@ -1,6 +1,5 @@
 package com.pro.dao;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.pro.DAO;
@@ -71,40 +70,68 @@ public class StarLikeDAO extends DAO {
 			disConnect();
 		}
 	}
+	
+	public void checkLike (StarLikeVO slv) {
+		
+		conn = getConnect();
+		
+		String sql = "SELECT\n"+
+				"    like_seq\n"+
+				"FROM\n"+
+				"    info_like\n"+
+				"WHERE\n"+
+				"        movie_id = ?\n"+
+				"    AND usr_id = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, slv.getMovieId());
+			psmt.setString(2, slv.getId());
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				slv.setIndivLike(1);
+			} else {
+				slv.setIndivLike(0);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disConnect();
+		}
+
+	}
 
 	public void like(StarLikeVO slv) {
 		conn = getConnect();
 
 		String sql = "INSERT INTO info_like (\n"+
+				"    like_seq,\n"+
 				"    usr_id,\n"+
 				"    movie_id\n"+
 				") VALUES (\n"+
+				"    'ls' || info_like_seq.NEXTVAL,\n"+
 				"    ?,\n"+
 				"    ?\n"+
 				")";
 		
-		try (PreparedStatement psmt = conn.prepareStatement(sql)) {
-			conn.setAutoCommit(false);
+		try {
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, slv.getId());
 			psmt.setInt(2, slv.getMovieId());
-			psmt.executeUpdate();
-			conn.commit();
+			int r = psmt.executeUpdate();
+			slv.setIndivLike(1);
+			
+			if (r>0) {
+				System.out.println("done");
+			} else {
+				System.out.println("failed");
+			}
 			
 		} catch (SQLException e) {
-			if (conn != null) {
-				try {
-					conn.rollback();
-				} catch (SQLException e2) {
-					System.out.println("this like action has been failed");
-				}
-			}
-			System.out.println("this like action has been failed");
+			e.printStackTrace();
 		} finally {
-			try {
-				conn.setAutoCommit(true);
-			} catch (SQLException e3) {
-				System.out.println("this like action has been failed");
-			}
 			disConnect();
 		}
 	}
@@ -120,8 +147,14 @@ public class StarLikeDAO extends DAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, slv.getId());
 			psmt.setInt(2, slv.getMovieId());
-			psmt.executeUpdate();
+			int r = psmt.executeUpdate();
 			slv.setIndivLike(0);
+			
+			if (r>0) {
+				System.out.println("done");
+			} else {
+				System.out.println("failed");
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

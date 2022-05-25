@@ -20,7 +20,6 @@ public class DAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 //			conn = DriverManager.getConnection("jdbc:oracle:thin:@dbdeuxist01_high?TNS_ADMIN=C:\\\\Dev\\\\Wallet_DBdeuxist01", "admin", "Yd0534212460");
-			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

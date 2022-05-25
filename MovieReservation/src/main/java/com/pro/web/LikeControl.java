@@ -25,10 +25,15 @@ public class LikeControl implements Control {
 
 		InfoService service = new InfoService();
 
-		if (slv.getIndivLike() == 0) {
-			service.like(slv);
-		} else if (slv.getIndivLike() == 1) {
+		int bool = slv.getIndivLike();
+
+		service.checkLike(slv);
+
+		if (bool == 1) {
 			service.unLike(slv);
+		} else {
+			service.like(slv);
 		}
+
 	}
 }

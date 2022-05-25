@@ -48,4 +48,8 @@ public class InfoService {
 	public void unLike(StarLikeVO slv) {
 		dao2.unLike(slv);
 	}
+	
+	public void checkLike (StarLikeVO slv) {
+		dao2.checkLike(slv);
+	}
 }
