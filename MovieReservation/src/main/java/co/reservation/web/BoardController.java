@@ -93,6 +93,7 @@ public class BoardController extends HttpServlet {
 				String acticleNO = request.getParameter("articleNO");
 				articleVO=boardService.viewArticle(Integer.parseInt(acticleNO));
 				request.setAttribute("article", articleVO);
+				request.setAttribute("articleId", articleVO.getId());
 				nextPage="/board/viewArticle.tiles";
 			}
 				System.out.println(nextPage);

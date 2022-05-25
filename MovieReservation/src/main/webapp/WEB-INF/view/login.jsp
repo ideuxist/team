@@ -68,7 +68,9 @@
 			<input type = "submit" name = "logout" value = "로그아웃"  class="login_btn">
 			<input type = "hidden" name = "account" value = "logout"> 
 		</form>
-		
+		<form action = "${pageContext.servletContext.contextPath}/ReservationAutoControll.do" method = "post" id = "form">
+			<input type = "submit" name = "autoDB2" value = "영화 DB 상영등록" class="login_btn">
+		</form>
 	
 		<form action = "${pageContext.servletContext.contextPath}/autoInputDB.do" method = "post" id = "form">
 			<input type = "submit" name = "autoDB" value = "영화 DB 등록" class="login_btn">

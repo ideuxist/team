@@ -40,14 +40,16 @@ public class MovieService {
 		
 	}
 
-//	public List<Integer> SearchMovieId() {
-//		return dao.SearchMovieId();
-//	}
+	public List<Integer> SearchMovieId() {
+		return dao.SearchMovieId();
+	}
 
 
 
-//	public void FindScreeningId(List<Integer> list) {
-//		dao.FindScreeningId(list);
-//	}
-//	
+
+	public void FindScreeningId(int movieIdNum, String reserv, int screenLocation) {
+		dao.FindScreeningId(movieIdNum,reserv, screenLocation);
+		
+	}
+	
 }
