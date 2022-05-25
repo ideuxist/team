@@ -22,7 +22,8 @@ public class autoInputDBControl implements Control {
 		MovieService service = new MovieService();
 		MovieVO vo = new MovieVO();
 		for(int i =0; i<4 ; i++) {
-			System.out.println("autoDB 반복문 도달");
+
+			
 			vo.setId(id[i]);
 			vo.setMovieTitle(title[i]);
 			vo.setRuntime(runtime[i]);

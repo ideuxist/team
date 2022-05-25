@@ -21,10 +21,7 @@ public class ReservationAutoControll implements Control {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// sql 작성을 위해 vo 호출
-		MovieVO vo = new MovieVO();
-		ScreeningVO screen = new ScreeningVO();
-		SeatReservedVO seatReserved = new SeatReservedVO();
-		auditoriumVO audi = new auditoriumVO();
+
 		
 		//service 호출
 		MovieService service = new MovieService();
@@ -36,8 +33,7 @@ public class ReservationAutoControll implements Control {
 		List<String> date = new ArrayList<String>();
 		List<String> time = new ArrayList<String>();
 		List<Integer> screening1 = new ArrayList<Integer>();
-		List<Integer> screening2 = new ArrayList<Integer>();
-		List<Integer> screening3 = new ArrayList<Integer>();
+
 		// 현재 날짜 기준 5,6,7일 후 상영일자
 		
 		LocalDate now = LocalDate.now();
@@ -59,12 +55,7 @@ public class ReservationAutoControll implements Control {
 		screening1.add(1);
 		screening1.add(2);
 		screening1.add(3);
-		screening2.add(2);
-		screening2.add(3);
-		screening2.add(1);
-		screening3.add(3);
-		screening3.add(1);
-		screening3.add(2);
+
 		
 		//movie_id 값 가져오기
 		list = service.SearchMovieId();
@@ -74,7 +65,7 @@ public class ReservationAutoControll implements Control {
 		// 현재 list = ['', '',....];
 		// date = ['', '', '']
 		// timt =['10:00','16:00','20:00']
-		
+		 
 
 		for(int i = 5; i<list.size(); i++) { //3관까지 3번의 상영이 있어서 3개만 설정
 			int movieIdNum = list.get(i);

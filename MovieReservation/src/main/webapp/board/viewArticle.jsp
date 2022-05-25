@@ -16,13 +16,8 @@
 	    obj.action="${contextPath}/boardController.boa";
 	    obj.submit();
 	  }
-      function fn_enable(obj){
-  	    const btn = document.getElementsByClassName('viewArticle_textBox')[0];				
-  	  }
-      function backToList(obj){
-  	    obj.action="${contextPath}/boardController.boa";
-  	    obj.submit();
-  	  }
+     
+
    </script>
    <style>
    		#viewArticle_table{
@@ -57,6 +52,7 @@
 		 padding : 2px;
 		 background-color : rgba(255,255,255,0.2);
 		 color : rgba(255,255,255,0.4);
+		 margin-top : 30px;
    		}
    		.viewArticle_btn_last{
    			position : relative;
@@ -66,7 +62,7 @@
 			 padding : 2px;
 			 background-color : rgba(255,255,255,0.2);
 			 color : rgba(255,255,255,0.4);
-			 margin : 0 130px 0 0 ;
+			 margin : 30px 130px 0 0 ;
    		}
 
    </style>
@@ -119,6 +115,7 @@
    		    <textarea rows="20" cols="60"  name="content"  id="i_content"  >${article.content }</textarea>
  	    </td>
 	    <%}else{ %>
+	   
 	   	 <td>
   		    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled>${article.content }</textarea>
    		 </td>
@@ -134,7 +131,7 @@
    </td>
    <td>
      <input  type= "hidden"   name="originalFileName" value="${article.imageFileName }" />
-    <img src="${contextPath}/download.do?imageFileName=${article.imageFileName}&articleNO=${article.articleNO }"   id="preview"  /><br>
+   <!--  <img src="${contextPath}/download.do?imageFileName=${article.imageFileName}&articleNO=${article.articleNO }"   id="preview"  /><br> -->
        
    </td>   
   </tr>  
@@ -149,13 +146,13 @@
 	      등록일자
 	   </td>
 	   <td>
-	    <input type=text value="<fmt:formatDate value="${article.writeDate}"/>" disabled  id = "viewArticle_formatDate"/>
+	    <input type=text value="<fmt:formatDate value="${article.writeDate}"/>" disabled  id = "viewArticle_
+atDate"/>
 	   </td>   
   </tr>
   <tr   id="tr_btn_modify"  >
 	   <td colspan="2"   align="center" >
-	       <input type=button value="수정하기"   onClick="fn_modify_article(frmArticle)"  >
-           <input type=button value="취소"  onClick="backToList(frmArticle)">
+
 	   </td>   
   </tr>
     

@@ -82,13 +82,24 @@ public class BoardController extends HttpServlet {
 				String title = articleMap.get("title");
 				String content = articleMap.get("content");
 				String imageFileName = articleMap.get("imageFileName");
-				articleVO.setParentNO(0);
-				articleVO.setId(id);
-				articleVO.setTitle(title);
-				articleVO.setContent(content);
-				articleVO.setImageFileName(imageFileName);
-				boardService.addArticle(articleVO);
-				nextPage="/boardController.boa";
+				if(imageFileName == null) {
+					String imageFileName1 = "0";
+					articleVO.setParentNO(0);
+					articleVO.setId(id);
+					articleVO.setTitle(title);
+					articleVO.setContent(content);
+					articleVO.setImageFileName(imageFileName1);
+					boardService.addArticle(articleVO);
+					nextPage="/boardController.boa";
+				} else {
+					articleVO.setParentNO(0);
+					articleVO.setId(id);
+					articleVO.setTitle(title);
+					articleVO.setContent(content);
+					articleVO.setImageFileName(imageFileName);
+					boardService.addArticle(articleVO);
+					nextPage="/boardController.boa";
+				}
 			}else if(action.equals("/board/viewArticle.boa")){
 				String acticleNO = request.getParameter("articleNO");
 				articleVO=boardService.viewArticle(Integer.parseInt(acticleNO));
