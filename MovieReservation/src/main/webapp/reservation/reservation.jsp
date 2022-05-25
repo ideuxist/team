@@ -26,18 +26,15 @@
  position:relative;
  left : 70px;
 }
-
 #step2 {
  float : right;
  width: 500px;
  height:800px;
-
 }
 .seat {
 	width: 30px;
 	height: 30px;
 }
-
 .clicked {
 	background-color: red;
 	color: white;
@@ -48,7 +45,6 @@
  background-color : rgba(255,255,255,0.2);
  color : rgba(255,255,255,0.7);
  padding : 5px;
-
 }
 input, progress {
   accent-color: rgba(255,255,255,0.9);
@@ -81,7 +77,6 @@ th, td {
  right : 250px;
  top : 100px;
 }
-
 </style>
 </head>
 
@@ -153,9 +148,15 @@ th, td {
 		
 		<!-- 	<h3 align="center">입구=========스크린=========출구</h3> -->
 			<table id="reservTb" align="center">
+			<c:choose>
+				<c:when test="${empty seat}">
+				</c:when>
+				<c:otherwise>
 			<tr>
 			<th colspan="5">입구=========스크린=========출구</th>
 			</tr>
+				</c:otherwise>
+			</c:choose>
 			<tr>
 			<c:forEach items="${seat}" var="seat">
 					  <c:choose>
@@ -213,8 +214,6 @@ th, td {
 
 
 <!-- <script>
-
-
 	//start viewseat
 	 let test = [];
 	 let selectedSeats = new Array();
@@ -222,7 +221,6 @@ th, td {
 	 const seatWrapper = document.querySelector(".seat-wrapper");
 	 let clicked = "";
 	 let div = "";
-
 	 for (let i = 0; i < 7; i++) {
 	 div = document.createElement("div");
 	 seatWrapper.append(div);
@@ -238,7 +236,6 @@ th, td {
 	 console.log(e.target.value);
 	 //중복방지 함수
 	 selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
-
 	 //click class가 존재할때(제거해주는 toggle)
 	 if (input.classList.contains("clicked")) {
 	 input.classList.remove("clicked");
@@ -259,7 +256,6 @@ th, td {
 	 })
 	 }
 	 }
-
 	 function mapping(input, i, j) {
 	 if (i === 0) {
 	 input.value = "A" + j;
