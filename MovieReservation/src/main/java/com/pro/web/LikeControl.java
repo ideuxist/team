@@ -29,9 +29,9 @@ public class LikeControl implements Control {
 
 		service.checkLike(slv);
 
-		if (bool == 1) {
+		if (bool == 0) {
 			service.unLike(slv);
-		} else {
+		} else if (bool == 1) {
 			service.like(slv);
 		}
 

@@ -76,7 +76,7 @@ public class StarLikeDAO extends DAO {
 		conn = getConnect();
 		
 		String sql = "SELECT\n"+
-				"    like_seq\n"+
+				"    movie_id\n"+
 				"FROM\n"+
 				"    info_like\n"+
 				"WHERE\n"+
@@ -107,11 +107,11 @@ public class StarLikeDAO extends DAO {
 		conn = getConnect();
 
 		String sql = "INSERT INTO info_like (\n"+
-				"    like_seq,\n"+
+
 				"    usr_id,\n"+
 				"    movie_id\n"+
 				") VALUES (\n"+
-				"    'ls' || info_like_seq.NEXTVAL,\n"+
+			
 				"    ?,\n"+
 				"    ?\n"+
 				")";

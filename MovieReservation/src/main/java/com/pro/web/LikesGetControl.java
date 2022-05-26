@@ -26,7 +26,7 @@ public class LikesGetControl implements Control {
 		service.getLikes(slv);
 
 		request.setAttribute("likes", slv.getLikes());
-		request.getRequestDispatcher("movieInfo/movieInfo.jsp").forward(request, response);
+		request.getRequestDispatcher("${pageContext.servletContext.contextPath}/movieInfo/test.jsp").forward(request, response);
 
 //		PrintWriter out = response.getWriter();
 //

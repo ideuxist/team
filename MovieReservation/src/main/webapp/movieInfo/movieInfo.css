@@ -12,6 +12,10 @@ body {
     background-color: black;
 }
 
+.overview {
+    padding-top: 50px;
+}
+
 .pageBtn {
     border-style: none;
     border-radius: 5px;
@@ -174,11 +178,11 @@ body {
 .rel {
     grid-area: rel;
     padding: 5%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .trailer {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     grid-area: trailer;
 }
 
@@ -197,20 +201,20 @@ body {
 .info {
     grid-area: info;
     padding: 5%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .overview {
     padding: 5%;
     padding-top: 0%;
     grid-area: overview;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .comment {
     padding: 5%;
     grid-area: comment;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* star */

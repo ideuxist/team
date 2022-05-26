@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@page import="com.pro.dao.StarLikeDAO, com.pro.vo.StarLikeVO, java.util.*"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -16,11 +18,32 @@
 <body>
 
 <%
+// get parameter
+int movieId = Integer.parseInt(request.getParameter("movieId"));
 String id = (String) session.getAttribute("id");
+
+// get likes, indivlike
+StarLikeVO slv = new StarLikeVO();
+slv.setId(id);
+slv.setMovieId(movieId);
+StarLikeDAO sld = new StarLikeDAO();
+sld.getLikes(slv);
+sld.getIndivLike(slv);
+
+int indivLike = slv.getIndivLike();
+int likes = slv.getLikes();
+
+// forward attribute
+request.setAttribute("likes",likes);  
+request.setAttribute("movieId",movieId);
+request.setAttribute("indivLike",indivLike);
 %>
 
 <script>
+	let checkLike = `${indivLike}`;
 	let sessionId = `${id}`;
+	let likes = `${likes}`;
+	let movieId = `${movieId}`;
 </script>
 
 	<div class="container">
@@ -36,10 +59,10 @@ String id = (String) session.getAttribute("id");
 			</div>
 			<div id="overview"></div>
 			<div id="btnSet">
-				<!-- <div id="likesDiv">
+				<div id="likesDiv">
 					&#9829;
 					<div id="likeCount"></div>
-				</div> -->
+				</div>
 				<div id="reserveBtn">예매하기</div>
 			</div>
 		</div>
