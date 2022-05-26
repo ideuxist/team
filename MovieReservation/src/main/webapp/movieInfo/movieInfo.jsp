@@ -36,11 +36,10 @@ String id = (String) session.getAttribute("id");
 			</div>
 			<div id="overview"></div>
 			<div id="btnSet">
-				<div id="likesDiv">
+				<!-- <div id="likesDiv">
 					&#9829;
 					<div id="likeCount"></div>
-				</div>
-
+				</div> -->
 				<div id="reserveBtn">예매하기</div>
 			</div>
 		</div>

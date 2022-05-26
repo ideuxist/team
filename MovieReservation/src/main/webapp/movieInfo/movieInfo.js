@@ -24,7 +24,7 @@ function getMovie() {
     fetch(url)
         .then(res => res.json())
         .then(res => {
-            getTrailer(res.imdb_id);
+            // getTrailer(res.imdb_id);
 
             let base_url = "https://image.tmdb.org/t/p/w500";
             let poster = base_url + res.poster_path;
@@ -269,42 +269,42 @@ function getRating() {
         })
 }
 
-// getting like properties 
-var checkLike = 0;
-var likes = 0;
+// // getting like properties 
+// var checkLike = 0;
+// var likes = 0;
 
-// when clicking a like btn
-let likeCount = document.getElementById('likeCount');
-let likesDiv = document.getElementById('likesDiv');
-likesDiv.addEventListener('click', e => {
-    likeCheck();
-});
+// // when clicking a like btn
+// let likeCount = document.getElementById('likeCount');
+// let likesDiv = document.getElementById('likesDiv');
+// likesDiv.addEventListener('click', e => {
+//     likeCheck();
+// });
 
-function likeCheck() {
-    if (checkLike == 0) {
-        checkLike = 1;
-        likes += 1;
-        likeCount.innerHTML = likes;
-        clickLike(checkLike)
-    } else if (checkLike == 1) {
-        checkLike = 0;
-        likes -= 1;
-        likeCount.innerHTML = likes;
-        clickLike(checkLike);
-    }
-}
+// function likeCheck() {
+//     if (checkLike == 0) {
+//         checkLike = 1;
+//         likes += 1;
+//         likeCount.innerHTML = likes;
+//         clickLike(checkLike)
+//     } else if (checkLike == 1) {
+//         checkLike = 0;
+//         likes -= 1;
+//         likeCount.innerHTML = likes;
+//         clickLike(checkLike);
+//     }
+// }
 
-function clickLike(val) {
-    let url = `../clickLike.go`
+// function clickLike(val) {
+//     let url = `../clickLike.go`
 
-    fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
-    })
-}
+//     fetch(url, {
+//         method: 'post',
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         },
+//         body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
+//     })
+// }
 
 function infoPage() {
     getMovie();
