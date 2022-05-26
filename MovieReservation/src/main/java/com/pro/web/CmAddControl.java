@@ -19,11 +19,10 @@ public class CmAddControl implements Control {
 		String comment = request.getParameter("comment");
 		String stars = request.getParameter("stars");
 		String movieId = request.getParameter("movieId");
-
-		System.out.println(stars);
+		String id = request.getParameter("id");
 
 		MemberVO vo = new MemberVO();
-		vo.setId("testId");
+		vo.setId(id);
 		vo.setCmCont(comment);
 		vo.setCmStars(Integer.parseInt(stars));
 		vo.setMovieId(movieId);

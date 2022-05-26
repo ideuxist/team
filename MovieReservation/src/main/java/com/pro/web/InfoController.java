@@ -28,26 +28,27 @@ public class InfoController extends HttpServlet {
 
 		list = new HashMap<String, Control>();
 
-		// commnet
-		list.put("/commentAdd.do", new CmAddControl());
-		list.put("/commnetList.do", new CmListControl());
-		list.put("/commentDel.do", new CmDelControl());
-		list.put("/commnetPage.do", new CmPageControl());
+		// comment
+		list.put("/commentAdd.go", new CmAddControl());
+		list.put("/commentList.go", new CmListControl());
+		list.put("/commentDel.go", new CmDelControl());
+		list.put("/commentPage.go", new CmPageControl());
 		
 		// likes and rating
-		list.put("/getIndivLike.do", new IndivLikeGetControl());
-		list.put("/getLikes.do", new LikesGetControl());
-		list.put("/getRating.do", new RatingGetControl());
-		list.put("/clickLike.do", new LikeControl());
+		list.put("/getIndivLike.go", new IndivLikeGetControl());
+		list.put("/getLikes.go", new LikesGetControl());
+		list.put("/clickLike.go", new LikeControl());
+		list.put("/getRating.go", new RatingGetControl());
 		
 		// payment
-		list.put("/payment.do", new PayControl());
+		list.put("/payment.go", new PayControl());
+		
 		
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		req.setCharacterEncoding(charset);
 
 		String uri = req.getRequestURI();
@@ -56,6 +57,8 @@ public class InfoController extends HttpServlet {
 
 		Control exeCon = list.get(path);
 		exeCon.execute(req, resp);
+		
+
 	}
 
 }

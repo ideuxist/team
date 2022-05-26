@@ -1,14 +1,21 @@
+console.log('hello!');
+
 // data for API and parameter
 let key = "6446bae76aaffa9af6d4c00b2299f016";
 let srcPara = new URL(location.href).searchParams;
 let movieId = srcPara.get('movieId');
-let sessionId = 'testId';
 
 // tag collection
 let posterDiv = document.querySelector('.poster');
 let titleDiv = document.getElementById('title')
 let overviewDiv = document.getElementById('overview');
 let relDateDiv = document.getElementById('relDate');
+let reserveBtn = document.getElementById('reserveBtn');
+
+reserveBtn.addEventListener('click', e => {
+    let url = `../reservation/reservation.tiles?`;
+    location.href = url;
+})
 
 // retrieve movie infomation
 function getMovie() {
@@ -17,14 +24,13 @@ function getMovie() {
     fetch(url)
         .then(res => res.json())
         .then(res => {
-            getTrailer(res.imdb_id);
+            // getTrailer(res.imdb_id);
 
             let base_url = "https://image.tmdb.org/t/p/w500";
             let poster = base_url + res.poster_path;
             let img = document.createElement('img');
             img.setAttribute("id", "posterImg");
             img.src = poster;
-            console.log(img);
             posterDiv.appendChild(img);
 
             let title = res.original_title;
@@ -44,16 +50,6 @@ function getMovie() {
         })
 };
 
-// get credits
-function getCredits(id) {
-    let url = `https://imdb-api.com/en/API/FullCast/k_wfatj861/${id}`;
-
-    fetch(url)
-        .then(res => res.json())
-        .then(res => {
-        })
-}
-
 // get trailer
 let trailerDiv = document.querySelector('.trailer');
 
@@ -63,7 +59,6 @@ function getTrailer(id) {
     fetch(url)
         .then(res => res.json())
         .then(res => {
-            console.log(res);
             let vid = document.createElement('iframe');
             vid.width = 300;
             vid.height = 300;
@@ -79,27 +74,28 @@ let totNumPages = 0;
 let pagination = document.getElementById('pagination');
 
 function makePage() {
-    let url = `commnetPage.do`;
+    let url = `../commentPage.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}`
+        })
         .then(res => res.json())
         .then(res => {
             totNumPages = Math.ceil(res.count / 5);
             pagination.innerHTML = "";
             for (let i = 1; i <= totNumPages; i++) {
-                let a = document.createElement('a');
-                a.innerHTML = ` ${i} `;
-                a.href = '#';
-                a.addEventListener('click', e => {
+                let btn = document.createElement('input');
+                btn.setAttribute("type", "button");
+                btn.setAttribute("class", "pageBtn");
+                btn.value = ` ${i} `;
+                btn.addEventListener('click', e => {
                     showComment(i);
                 })
-                pagination.appendChild(a);
+                pagination.appendChild(btn);
             }
         })
 }
@@ -136,14 +132,14 @@ let table = document.getElementById('cmtTable');
 function showComment(page) {
     table.innerHTML = "";
 
-    let url = `commnetList.do`;
+    let url = `../commentList.go`;
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&page=${page}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}&page=${page}`
+        })
         .then(res => res.json())
         .then(res => {
             res.forEach(element => {
@@ -190,14 +186,14 @@ function showComment(page) {
 }
 
 function delComment(val) {
-    let url = `commentDel.do`;
+    let url = `../commentDel.go`;
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `code=${val}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `code=${val}`
+        })
         .then(res => {
             makePage();
             showComment(1);
@@ -206,14 +202,21 @@ function delComment(val) {
         })
 }
 
-function addComment() {
-    let url = `commentAdd.do`;
+// add comment section
+let addBtn = document.getElementById('addBtn');
+addBtn.addEventListener('click', addComment);
 
-    let addBtn = document.getElementById('addBtn');
-    addBtn.addEventListener('click', e => {
+function addComment() {
+    if (sessionId == '') {
+        alert("로그인하세욧!");
+    } else {
+        console.log(sessionId);
+
+        let url = `../commentAdd.go`;
+
         let comment = document.getElementById('area').value;
         let stars = document.querySelectorAll('.star-rating>input');
-        let val;
+        let val = 0;
 
         stars.forEach(element => {
             if (element.checked == true) {
@@ -221,39 +224,43 @@ function addComment() {
             }
         })
 
-        fetch(url, {
-            method: 'post',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `comment=${comment}&stars=${val}&movieId=${movieId}`
-        })
-            .then(res => {
-                document.getElementById('area').value = "";
-                stars.forEach(element => {
-                    element.checked = false;
+        if (val == 0 || comment == null) {
+            alert("모든 항목을 입력하세요")
+        } else {
+            fetch(url, {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `comment=${comment}&stars=${val}&movieId=${movieId}&id=${sessionId}`
                 })
-                makePage();
-                showComment(1);
-                ratingDiv.innerHTML = "";
-                getRating();
-            })
-    })
+                .then(res => {
+                    document.getElementById('area').value = "";
+                    stars.forEach(element => {
+                        element.checked = false;
+                    })
+                    makePage();
+                    showComment(1);
+                    ratingDiv.innerHTML = "";
+                    getRating();
+                })
+        }
+    }
 }
 
 // Rating setion
 let ratingDiv = document.getElementById('ratingDiv')
 
 function getRating() {
-    let url = `getRating.do`;
+    let url = `../getRating.go`;
 
     fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}`
+        })
         .then(res => res.json())
         .then(res => {
             let a = document.createElement('a');
@@ -262,72 +269,47 @@ function getRating() {
         })
 }
 
-// Likes settion
-// get a number of likes
-let indivLike = 0;
-let likesDiv = document.getElementById('likesDiv');
-let likeCount = document.getElementById('likeCount');
-likesDiv.addEventListener('click', e => {
-    likeCount.innerHTML = "";
-    clickLike();
-    getIndivLike();
-    getLikes();
-})
+// // getting like properties 
+// var checkLike = 0;
+// var likes = 0;
 
-// invoke individual like
-function clickLike() {
-    let url = `clickLike.do`;
+// // when clicking a like btn
+// let likeCount = document.getElementById('likeCount');
+// let likesDiv = document.getElementById('likesDiv');
+// likesDiv.addEventListener('click', e => {
+//     likeCheck();
+// });
 
-    fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&id=${sessionId}&bool=${indivLike}`
-    })
-}
+// function likeCheck() {
+//     if (checkLike == 0) {
+//         checkLike = 1;
+//         likes += 1;
+//         likeCount.innerHTML = likes;
+//         clickLike(checkLike)
+//     } else if (checkLike == 1) {
+//         checkLike = 0;
+//         likes -= 1;
+//         likeCount.innerHTML = likes;
+//         clickLike(checkLike);
+//     }
+// }
 
-// processing individual like
-function getIndivLike() {
-    let url = `getIndivLike.do`;
+// function clickLike(val) {
+//     let url = `../clickLike.go`
 
-    fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}&id=${sessionId}`
-    })
-        .then(res => res.json())
-        .then(res => {
-            indivLike = res.indivLike;
-        })
-}
-
-function getLikes() {
-    let url = `getLikes.do`;
-
-    fetch(url, {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `movieId=${movieId}`
-    })
-        .then(res => res.json())
-        .then(res => {
-            likeCount.innerHTML = `${res.likes}`;
-        })
-}
+//     fetch(url, {
+//         method: 'post',
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         },
+//         body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
+//     })
+// }
 
 function infoPage() {
     getMovie();
-    getCredits();
     makePage();
-    addComment();
     showComment(current_page);
-    getIndivLike();
-    getLikes();
     getRating();
 }
 

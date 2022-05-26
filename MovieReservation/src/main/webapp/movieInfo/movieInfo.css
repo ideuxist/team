@@ -4,8 +4,38 @@
     color: white;
 }
 
+#title {
+    text-align: left;
+}
+
 body {
     background-color: black;
+}
+
+.pageBtn {
+    border-style: none;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#relDate {
+    text-align: left;
+    margin: 10px 0;
+}
+
+#cmtTableCont {
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
+#cmtSubmit {
+    margin-bottom: 40px;
+    width: 100%;
 }
 
 #cmtSubmit * {
@@ -20,6 +50,7 @@ body {
 }
 
 #pageNav {
+    display: inline-block;
     margin: 0 auto;
 }
 
@@ -31,6 +62,11 @@ body {
 
 #btnSet * {
     float: left;
+}
+
+#cmtTable {
+    table-layout: fixed;
+    overflow: hidden;
 }
 
 #btn_prev,
@@ -51,7 +87,7 @@ body {
     overflow: auto;
     border-radius: 10px;
     padding: 15px;
-    padding-top: 0px;
+    padding-top: 15px;
     height: 180px;
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -66,7 +102,7 @@ body {
     border-radius: 5px;
     border: 0;
     height: 30px;
-    width: 250px;
+    width: 350px;
     background-color: rgba(0, 0, 0, 0.5);
     place-content: white;
 }
@@ -83,6 +119,10 @@ body {
     background-color: rgb(240, 255, 23);
 }
 
+#likeCount {
+    margin-left: 10px;
+}
+
 #likesDiv {
     margin-right: 10px;
     margin-top: 20px;
@@ -91,7 +131,7 @@ body {
     color: black;
     border-radius: 10px;
     text-align: center;
-    width: 120px;
+    width: 50px;
     height: 30px;
     background-color: rgb(255, 53, 114);
 }
@@ -118,6 +158,7 @@ body {
 
 /* main */
 .container {
+    margin-top: 15px;
     box-sizing: border-box;
     justify-content: center;
     display: grid;
@@ -134,7 +175,6 @@ body {
     grid-area: rel;
     padding: 5%;
     background-color: rgba(255, 255, 255, 0.2);
-
 }
 
 .trailer {
@@ -171,18 +211,6 @@ body {
     padding: 5%;
     grid-area: comment;
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-#cmtTableCont {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    object-fit: cover;
-    height: 250px;
-}
-
-#cmtTableCont {
-    height: 150px;
 }
 
 /* star */

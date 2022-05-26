@@ -1,0 +1,70 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+.container {
+    margin-left: 37%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 220px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "poster title title"
+        "poster release release"
+        "poster rating rating";
+}
+
+.poster {
+    grid-area: poster;
+}
+
+.title {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+    width: auto;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    grid-area: title;
+}
+
+.release {
+    line-height: 35px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+    width: 120px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.3);
+    grid-area: release;
+}
+
+.rating {
+    grid-area: rating;
+}
+
+.ratingDiv {
+    margin-top: 20px;
+    font-weight: 700;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    width: 140x;
+    height: 50px;
+    background-color: #fc0;
+}
