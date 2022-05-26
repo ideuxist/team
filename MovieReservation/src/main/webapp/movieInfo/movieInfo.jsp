@@ -42,7 +42,7 @@ request.setAttribute("indivLike",indivLike);
 <script>
 	let checkLike = `${indivLike}`;
 	let sessionId = `${id}`;
-	let likes = `${likes}`;
+	let likes = parseInt(`${likes}`);
 	let movieId = `${movieId}`;
 </script>
 

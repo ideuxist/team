@@ -207,7 +207,7 @@ addBtn.addEventListener('click', addComment);
 
 function addComment() {
     if (sessionId == '') {
-        alert("로그인하세욧!");
+        alert("로그인하세요");
     } else {
         console.log(sessionId);
 
@@ -272,18 +272,24 @@ function getRating() {
 let likeCount = document.getElementById('likeCount');
 let likesDiv = document.getElementById('likesDiv');
 likesDiv.addEventListener('click', e => {
-    likeCount.innerHTML = "";
-    likeCheck();
+    if (sessionId == '') {
+        alert("로그인하세요");
+    } else {
+        likeCount.innerHTML = "";
+        likeCheck();
+    }
 });
 
 function likeCheck() {
     if (checkLike == 0) {
         checkLike = 1;
-        likes += 1;
+        likes = (parseInt(likes) + 1);
+        console.log(likes);
         clickLike(checkLike)
     } else if (checkLike == 1) {
         checkLike = 0;
-        likes -= 1;
+        likes = (parseInt(likes) - 1);
+        console.log(likes);
         clickLike(checkLike);
     }
 }
@@ -299,7 +305,7 @@ function clickLike(val) {
             body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
         })
         .then(res => {
-            likeCount.innerHTML = likes;
+            likeCount.innerHTML = parseInt(likes);
         })
 }
 
