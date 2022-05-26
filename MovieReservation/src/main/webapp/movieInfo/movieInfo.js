@@ -3,7 +3,6 @@ console.log('hello!');
 // data for API and parameter
 let key = "6446bae76aaffa9af6d4c00b2299f016";
 let srcPara = new URL(location.href).searchParams;
-let movieId = srcPara.get('movieId');
 
 // tag collection
 let posterDiv = document.querySelector('.poster');
@@ -269,48 +268,47 @@ function getRating() {
         })
 }
 
-// // getting like properties 
-// var checkLike = 0;
-// var likes = 0;
-
 // // when clicking a like btn
-// let likeCount = document.getElementById('likeCount');
-// let likesDiv = document.getElementById('likesDiv');
-// likesDiv.addEventListener('click', e => {
-//     likeCheck();
-// });
+let likeCount = document.getElementById('likeCount');
+let likesDiv = document.getElementById('likesDiv');
+likesDiv.addEventListener('click', e => {
+    likeCount.innerHTML = "";
+    likeCheck();
+});
 
-// function likeCheck() {
-//     if (checkLike == 0) {
-//         checkLike = 1;
-//         likes += 1;
-//         likeCount.innerHTML = likes;
-//         clickLike(checkLike)
-//     } else if (checkLike == 1) {
-//         checkLike = 0;
-//         likes -= 1;
-//         likeCount.innerHTML = likes;
-//         clickLike(checkLike);
-//     }
-// }
+function likeCheck() {
+    if (checkLike == 0) {
+        checkLike = 1;
+        likes += 1;
+        clickLike(checkLike)
+    } else if (checkLike == 1) {
+        checkLike = 0;
+        likes -= 1;
+        clickLike(checkLike);
+    }
+}
 
-// function clickLike(val) {
-//     let url = `../clickLike.go`
+function clickLike(val) {
+    let url = `../clickLike.go`
 
-//     fetch(url, {
-//         method: 'post',
-//         headers: {
-//             "Content-Type": "application/x-www-form-urlencoded"
-//         },
-//         body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
-//     })
-// }
+    fetch(url, {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `movieId=${movieId}&id=${sessionId}&bool=${val}`
+        })
+        .then(res => {
+            likeCount.innerHTML = likes;
+        })
+}
 
 function infoPage() {
     getMovie();
     makePage();
     showComment(current_page);
     getRating();
+    likeCount.innerHTML = likes;
 }
 
 window.addEventListener('onLoad', infoPage());
