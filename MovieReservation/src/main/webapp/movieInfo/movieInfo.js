@@ -23,7 +23,7 @@ function getMovie() {
     fetch(url)
         .then(res => res.json())
         .then(res => {
-            // getTrailer(res.imdb_id);
+            getTrailer(res.imdb_id);
 
             let base_url = "https://image.tmdb.org/t/p/w500";
             let poster = base_url + res.poster_path;

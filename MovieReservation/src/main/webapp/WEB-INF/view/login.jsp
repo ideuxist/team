@@ -55,6 +55,7 @@
 		color:#888888;
 		background-color: black;
 		font-size: 12px;
+		margin: 0 20px 0 0;
 	}
 	#login_formform{
 		margin-top : 20px;
@@ -86,8 +87,7 @@
 	<%if(id == null){%>
 	<form action ="${pageContext.servletContext.contextPath}/member.view/login.tiles" method = "post" id = "login_formform">
 	<input type ="submit" value ="로그인" class="login_login">
-	<a href='javascript:void(0);' onclick="openFindId();" class = "find_btn">아이디 찾기</a>
-  	<a href='javascript:void(0);' onclick="openFindPw();" class = "find_btn_no">비밀번호 찾기</a>
+
 	</form>
 	<form action = "${pageContext.servletContext.contextPath}/member.view/join.tiles" method = "post">
 		<input type = "submit" value = "회원가입"  class="login_btn_no">

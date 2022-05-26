@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
 	font-size: 15px;
 }
 .poster_div_btn_first{
-	margin-left: 20px;
+
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-left-radius: 5px;

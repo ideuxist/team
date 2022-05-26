@@ -153,8 +153,10 @@ th, td {
 				</c:when>
 				<c:otherwise>
 			<tr>
-			<th colspan="5">입구=========스크린=========출구</th>
+			<th colspan="5">입구===============스크린===============출구</th>
 			</tr>
+			<tr>
+			<th colspan="5" height="30px"></th></tr>
 				</c:otherwise>
 			</c:choose>
 			<tr>

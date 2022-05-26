@@ -71,7 +71,8 @@ public class ReservationDAO extends DAO {
 		String sql = "select s.auditorium_id,s.screening_id as sid, to_char(s.screening_start,'hh24:mi') as start_time  "
 				+ "from movie m\r\n"
 				+ "inner join screening s on m.movie_id=s.movie_id\r\n"
-				+ "where to_char(s.screening_start,'yy/mm/dd') = ? and movie_title=?";
+				+ "where to_char(s.screening_start,'yy/mm/dd') = ? and movie_title=?"
+				+ "order by s.screening_start";
 		
 		try {
 			psmt=conn.prepareStatement(sql);
